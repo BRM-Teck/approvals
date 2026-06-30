@@ -78,7 +78,17 @@ class ApprovalRequest(models.Model):
         for vals in vals_list:
             if vals.get('category_id'):
                 category = self.env['approval.category'].browse(vals['category_id'])
-                if category.automated_sequence and category.sequence_id and (not vals.get('name') or vals.get('name') == 'New'):
+                if category.automated_sequence and (not vals.get('name') or vals.get('name') == 'New'):
+                    if not category.sequence_id:
+                        # Fallback: create sequence if it was missed
+                        sequence = self.env['ir.sequence'].sudo().create({
+                            'name': _('Approval Sequence %s', category.name),
+                            'code': 'approval.request.%s' % (category.sequence_code or 'SEQ'),
+                            'prefix': (category.sequence_code or 'SEQ') + '-',
+                            'padding': 5,
+                            'company_id': category.company_id.id or self.env.company.id,
+                        })
+                        category.sequence_id = sequence.id
                     vals['name'] = category.sequence_id.next_by_id()
         return super().create(vals_list)
 
