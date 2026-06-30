@@ -88,6 +88,39 @@ class ApprovalCategory(models.Model):
             'domain': [('category_id', '=', self.id)],
         }
 
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if vals.get('automated_sequence') and vals.get('sequence_code'):
+                sequence = self.env['ir.sequence'].sudo().create({
+                    'name': _('Approval Sequence %s', vals.get('name', '')),
+                    'code': 'approval.request.%s' % vals.get('sequence_code'),
+                    'prefix': vals.get('sequence_code') + '-',
+                    'padding': 5,
+                    'company_id': vals.get('company_id') or self.env.company.id,
+                })
+                vals['sequence_id'] = sequence.id
+        return super().create(vals_list)
+
+    def write(self, vals):
+        res = super().write(vals)
+        for category in self:
+            if category.automated_sequence and category.sequence_code and not category.sequence_id:
+                sequence = self.env['ir.sequence'].sudo().create({
+                    'name': _('Approval Sequence %s', category.name),
+                    'code': 'approval.request.%s' % category.sequence_code,
+                    'prefix': category.sequence_code + '-',
+                    'padding': 5,
+                    'company_id': category.company_id.id or self.env.company.id,
+                })
+                category.sequence_id = sequence.id
+            elif category.sequence_id and 'sequence_code' in vals and category.sequence_code:
+                category.sequence_id.sudo().write({
+                    'code': 'approval.request.%s' % category.sequence_code,
+                    'prefix': category.sequence_code + '-',
+                })
+        return res
+
 class ApprovalCategoryApprover(models.Model):
     _name = 'approval.category.approver'
     _description = 'Approval Category Approver'

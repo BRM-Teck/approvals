@@ -73,6 +73,15 @@ class ApprovalRequest(models.Model):
     change_request_owner = fields.Boolean(string='Can Change Request Owner', compute='_compute_change_request_owner')
     has_access_to_request = fields.Boolean(string='Has Access To Request', compute='_compute_has_access_to_request')
 
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if vals.get('category_id'):
+                category = self.env['approval.category'].browse(vals['category_id'])
+                if category.automated_sequence and category.sequence_id and (not vals.get('name') or vals.get('name') == 'New'):
+                    vals['name'] = category.sequence_id.next_by_id()
+        return super().create(vals_list)
+
     def _compute_attachment_number(self):
         for request in self:
             request.attachment_number = self.env['ir.attachment'].search_count([
