@@ -5,8 +5,8 @@
         <field name="model">approval.category</field>
         <field name="inherit_id" ref="approvals.approval_category_view_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='approval_type']" position="attributes">
-                <attribute name="invisible">0</attribute>
+            <xpath expr="//field[@name='approval_type']" position="replace">
+                <field name="approval_type" required="1"/>
             </xpath>
             <xpath expr="//field[@name='has_product']" position="attributes">
                 <attribute name="readonly">approval_type == 'purchase'</attribute>
