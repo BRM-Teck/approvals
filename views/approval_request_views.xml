@@ -129,7 +129,7 @@
                                     <field name="can_edit_user_id" column_invisible="True"/>
                                     <field name="user_id" string="Approver" widget="many2one_avatar_user" readonly="not can_edit_user_id or status != 'new'" force_save="1"/>
                                     <field name="required" readonly="not can_edit" force_save="1"/>
-                                    <field name="status"/>
+                                    <field name="status" readonly="1"/>
                                     <field name="company_id" column_invisible="True"/>
                                 </list>
                                 <kanban class="o_kanban_mobile">
