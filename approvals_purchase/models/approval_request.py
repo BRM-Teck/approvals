@@ -30,7 +30,7 @@ class ApprovalRequest(models.Model):
             lines_by_partner[partner].append(line)
         
         for partner, lines in lines_by_partner.items():
-            po = self.env['purchase.order'].create({
+            po = self.env['purchase.order'].sudo().create({
                 'partner_id': partner.id,
                 'approval_request_id': self.id,
                 'origin': self.name,
