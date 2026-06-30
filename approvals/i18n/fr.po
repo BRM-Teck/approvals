@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 19.0-20260528\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-30 12:19+0000\n"
-"PO-Revision-Date: 2026-06-30 12:19+0000\n"
+"POT-Creation-Date: 2026-06-30 12:29+0000\n"
+"PO-Revision-Date: 2026-06-30 12:29+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,17 +18,17 @@ msgstr ""
 #. module: approvals
 #: model_terms:ir.ui.view,arch_db:approvals.approval_request_view_kanban
 msgid "<i class=\"fa fa-check text-success me-1\"/>Approve"
-msgstr ""
+msgstr "<i class=\"fa fa-check text-success me-1\"/>Approuver"
 
 #. module: approvals
 #: model_terms:ir.ui.view,arch_db:approvals.approval_request_view_kanban
 msgid "<i class=\"fa fa-times text-danger me-1\"/>Refuse"
-msgstr ""
+msgstr "<i class=\"fa fa-times text-danger me-1\"/>Refuser"
 
 #. module: approvals
 #: model_terms:ir.ui.view,arch_db:approvals.approval_category_view_form
 msgid "<span class=\"fa fa-warning\" title=\"Invalid minimum approvals\"/>"
-msgstr ""
+msgstr "<span class=\"fa fa-warning\" title=\"Minimum d'approbations invalide\"/>"
 
 #. module: approvals
 #: model_terms:ir.ui.view,arch_db:approvals.approval_request_view_kanban
@@ -38,39 +38,39 @@ msgstr ""
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_request__message_needaction
 msgid "Action Needed"
-msgstr ""
+msgstr "Action requise"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_category__active
 #: model:ir.model.fields,field_description:approvals.field_approval_request__active
 msgid "Active"
-msgstr ""
+msgstr "Actif"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_request__activity_ids
 msgid "Activities"
-msgstr ""
+msgstr "Activités"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_request__activity_exception_decoration
 msgid "Activity Exception Decoration"
-msgstr ""
+msgstr "Décoration d'exception d'activité"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_request__activity_state
 msgid "Activity State"
-msgstr ""
+msgstr "Statut de l'activité"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_request__activity_type_icon
 msgid "Activity Type Icon"
-msgstr ""
+msgstr "Icône de type d'activité"
 
 #. module: approvals
 #: model:res.groups,name:approvals.group_approval_manager
 #: model:res.groups.privilege,name:approvals.privilege_approval_manager
 msgid "Administrator"
-msgstr ""
+msgstr "Administrateur"
 
 #. module: approvals
 #: model:ir.actions.act_window,name:approvals.approval_request_action_all
@@ -84,12 +84,12 @@ msgstr "Toutes les validations"
 #: model:ir.model.fields,field_description:approvals.field_approval_request__has_amount
 #: model_terms:ir.ui.view,arch_db:approvals.approval_category_view_form
 msgid "Amount"
-msgstr ""
+msgstr "Montant"
 
 #. module: approvals
 #: model:ir.model.fields.selection,name:approvals.selection__approval_category__approval_type__approval
 msgid "Approval"
-msgstr ""
+msgstr "Approbation"
 
 #. module: approvals
 #: model:ir.actions.act_window,name:approvals.approval_category_action
@@ -106,17 +106,17 @@ msgstr "Catégorie d'approbation"
 #. module: approvals
 #: model:ir.model,name:approvals.model_approval_category_approver
 msgid "Approval Category Approver"
-msgstr ""
+msgstr "Approbateur de la catégorie d'approbation"
 
 #. module: approvals
 #: model:ir.model,name:approvals.model_approval_product_line
 msgid "Approval Product Line"
-msgstr ""
+msgstr "Ligne de produit d'approbation"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_category__approval_properties_definition
 msgid "Approval Properties"
-msgstr ""
+msgstr "Propriétés d'approbation"
 
 #. module: approvals
 #: model:ir.model,name:approvals.model_approval_request
@@ -145,7 +145,7 @@ msgstr "Validations à examiner"
 #. module: approvals
 #: model_terms:ir.ui.view,arch_db:approvals.approval_request_view_form
 msgid "Approve"
-msgstr ""
+msgstr "Approuver"
 
 #. module: approvals
 #: model:ir.model.fields.selection,name:approvals.selection__approval_approver__status__approved
@@ -153,24 +153,24 @@ msgstr ""
 #: model:ir.model.fields.selection,name:approvals.selection__approval_request__user_status__approved
 #: model_terms:ir.ui.view,arch_db:approvals.approval_search_view_search
 msgid "Approved"
-msgstr ""
+msgstr "Approuvé"
 
 #. module: approvals
 #: model:ir.model,name:approvals.model_approval_approver
 #: model_terms:ir.ui.view,arch_db:approvals.approval_request_view_form
 msgid "Approver"
-msgstr ""
+msgstr "Approbateur"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_category__approver_sequence
 #: model:ir.model.fields,field_description:approvals.field_approval_request__approver_sequence
 msgid "Approver Sequence"
-msgstr ""
+msgstr "Séquence d'approbateur"
 
 #. module: approvals
 #: model_terms:ir.ui.view,arch_db:approvals.approval_request_view_form
 msgid "Approver(s)"
-msgstr ""
+msgstr "Approbateur(s)"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_category__approver_ids
@@ -179,12 +179,12 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:approvals.approval_category_view_form
 #: model_terms:ir.ui.view,arch_db:approvals.approval_request_view_tree
 msgid "Approvers"
-msgstr ""
+msgstr "Approbateurs"
 
 #. module: approvals
 #: model_terms:ir.ui.view,arch_db:approvals.approval_category_view_kanban
 msgid "Archive"
-msgstr ""
+msgstr "Archiver"
 
 #. module: approvals
 #: model_terms:ir.ui.view,arch_db:approvals.approval_category_view_form
@@ -193,12 +193,12 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:approvals.approval_request_view_form
 #: model_terms:ir.ui.view,arch_db:approvals.approval_search_view_search
 msgid "Archived"
-msgstr ""
+msgstr "Archivé"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_request__message_attachment_count
 msgid "Attachment Count"
-msgstr ""
+msgstr "Nombre de pièces jointes"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_category__automated_sequence
@@ -209,22 +209,22 @@ msgstr "Séquence Automatique"
 #. module: approvals
 #: model_terms:ir.ui.view,arch_db:approvals.approval_request_view_form
 msgid "Back To Draft"
-msgstr ""
+msgstr "Remettre à l'état de brouillon"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_request__change_request_owner
 msgid "Can Change Request Owner"
-msgstr ""
+msgstr "Peut modifier le propriétaire de la demande"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_approver__can_edit
 msgid "Can Edit"
-msgstr ""
+msgstr "Peut modifier"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_approver__can_edit_user_id
 msgid "Can Edit User"
-msgstr ""
+msgstr "Peut modifier l'utilisateur"
 
 #. module: approvals
 #: model:ir.model.fields.selection,name:approvals.selection__approval_approver__status__cancel
@@ -232,30 +232,32 @@ msgstr ""
 #: model:ir.model.fields.selection,name:approvals.selection__approval_request__user_status__cancel
 #: model_terms:ir.ui.view,arch_db:approvals.approval_request_view_form
 msgid "Cancel"
-msgstr ""
+msgstr "Annuler"
 
 #. module: approvals
 #: model_terms:ir.ui.view,arch_db:approvals.approval_search_view_search
 msgid "Canceled"
-msgstr ""
+msgstr "Annulé"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_category_approver__category_id
 #: model:ir.model.fields,field_description:approvals.field_approval_request__category_id
 #: model_terms:ir.ui.view,arch_db:approvals.approval_search_view_search
 msgid "Category"
-msgstr ""
+msgstr "Catégorie"
 
 #. module: approvals
 #: model:ir.model.fields,help:approvals.field_approval_category__name
 msgid "Category name (e.g. Procurement, Time Off)."
-msgstr ""
+msgstr "Nom de la catégorie (ex: Approvisionnement, Congés)."
 
 #. module: approvals
 #: model:ir.model.fields,help:approvals.field_approval_category__sequence_code
 msgid ""
 "Code used to generate the sequence of requests. E.g. 'PROC' for Procurement."
 msgstr ""
+"Code utilisé pour générer la séquence des demandes. Ex: 'PROC' pour "
+"Approvisionnement."
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_approver__company_id
@@ -264,7 +266,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:approvals.field_approval_product_line__company_id
 #: model:ir.model.fields,field_description:approvals.field_approval_request__company_id
 msgid "Company"
-msgstr ""
+msgstr "Société"
 
 #. module: approvals
 #: model:ir.ui.menu,name:approvals.approvals_menu_config
@@ -274,7 +276,7 @@ msgstr ""
 #. module: approvals
 #: model_terms:ir.ui.view,arch_db:approvals.approval_request_view_tree
 msgid "Confirm Date"
-msgstr ""
+msgstr "Date de confirmation"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_category__has_partner
@@ -282,12 +284,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:approvals.field_approval_request__partner_id
 #: model_terms:ir.ui.view,arch_db:approvals.approval_category_view_form
 msgid "Contact"
-msgstr ""
+msgstr "Contact"
 
 #. module: approvals
 #: model_terms:ir.actions.act_window,help:approvals.approval_category_action
 msgid "Create a new approval category"
-msgstr ""
+msgstr "Créer une nouvelle catégorie d'approbation"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_approver__create_uid
@@ -296,7 +298,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:approvals.field_approval_product_line__create_uid
 #: model:ir.model.fields,field_description:approvals.field_approval_request__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Créé par"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_approver__create_date
@@ -305,12 +307,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:approvals.field_approval_product_line__create_date
 #: model:ir.model.fields,field_description:approvals.field_approval_request__create_date
 msgid "Created on"
-msgstr ""
+msgstr "Créé le"
 
 #. module: approvals
 #: model:ir.model.fields,help:approvals.field_approval_category__approval_properties_definition
 msgid "Custom properties to add dynamic fields to requests."
 msgstr ""
+"Propriétés personnalisées pour ajouter des champs dynamiques aux demandes."
 
 #. module: approvals
 #: model:ir.actions.act_window,name:approvals.approval_category_action_dashboard
@@ -330,17 +333,17 @@ msgstr ""
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_request__date_confirmed
 msgid "Date confirmed"
-msgstr ""
+msgstr "Date de confirmation"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_request__date_end
 msgid "Date end"
-msgstr ""
+msgstr "Date de fin"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_request__date_start
 msgid "Date start"
-msgstr ""
+msgstr "Date de début"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_category__description
@@ -348,12 +351,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:approvals.field_approval_request__reason
 #: model_terms:ir.ui.view,arch_db:approvals.approval_request_view_form
 msgid "Description"
-msgstr ""
+msgstr "Description"
 
 #. module: approvals
 #: model:ir.model.fields,help:approvals.field_approval_category__sequence
 msgid "Determine the display order"
-msgstr ""
+msgstr "Détermine l'ordre d'affichage"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_approver__display_name
@@ -379,57 +382,57 @@ msgstr ""
 #. module: approvals
 #: model_terms:ir.ui.view,arch_db:approvals.approval_request_view_form
 msgid "E.g: Expenses Paris business trip"
-msgstr ""
+msgstr "Ex: Dépenses pour voyage d'affaires à Paris"
 
 #. module: approvals
 #: model_terms:ir.ui.view,arch_db:approvals.approval_category_view_kanban
 msgid "Edit"
-msgstr ""
+msgstr "Modifier"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_approver__existing_request_user_ids
 msgid "Existing Request User"
-msgstr ""
+msgstr "Utilisateur de la demande existante"
 
 #. module: approvals
 #: model_terms:ir.ui.view,arch_db:approvals.approval_category_view_form
 msgid "Fields"
-msgstr ""
+msgstr "Champs"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_request__message_follower_ids
 msgid "Followers"
-msgstr ""
+msgstr "Abonnés"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_request__message_partner_ids
 msgid "Followers (Partners)"
-msgstr ""
+msgstr "Abonnés (Partenaires)"
 
 #. module: approvals
 #: model:ir.model.fields,help:approvals.field_approval_request__activity_type_icon
 msgid "Font awesome icon e.g. fa-tasks"
-msgstr ""
+msgstr "Icône Font Awesome ex: fa-tasks"
 
 #. module: approvals
 #: model_terms:ir.ui.view,arch_db:approvals.approval_request_view_form
 msgid "From:"
-msgstr ""
+msgstr "De :"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_request__has_access_to_request
 msgid "Has Access To Request"
-msgstr ""
+msgstr "A accès à la demande"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_request__has_message
 msgid "Has Message"
-msgstr ""
+msgstr "A un message"
 
 #. module: approvals
 #: model:ir.module.category,description:approvals.module_category_human_resources_approvals
 msgid "Helps you manage approvals."
-msgstr ""
+msgstr "Vous aide à gérer les approbations."
 
 #. module: approvals
 #: model:ir.model.fields,help:approvals.field_approval_category__manager_approval
@@ -439,6 +442,10 @@ msgid ""
 "- Optional: The employee's manager will be added as an approver but can be removed.\n"
 "- None: The employee's manager will not be added automatically."
 msgstr ""
+"Comment le responsable de l'employé interagit avec cette catégorie.\n"
+"- Requis : Le responsable de l'employé doit approuver la demande.\n"
+"- Optionnel : Le responsable de l'employé sera ajouté en tant qu'approbateur mais peut être supprimé.\n"
+"- Aucun : Le responsable de l'employé ne sera pas ajouté automatiquement."
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_approver__id
@@ -452,23 +459,23 @@ msgstr ""
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_request__activity_exception_icon
 msgid "Icon"
-msgstr ""
+msgstr "Icône"
 
 #. module: approvals
 #: model:ir.model.fields,help:approvals.field_approval_request__activity_exception_icon
 msgid "Icon to indicate an exception activity."
-msgstr ""
+msgstr "Icône pour indiquer une activité d'exception."
 
 #. module: approvals
 #: model:ir.model.fields,help:approvals.field_approval_request__message_needaction
 msgid "If checked, new messages require your attention."
-msgstr ""
+msgstr "Si coché, de nouveaux messages nécessitent votre attention."
 
 #. module: approvals
 #: model:ir.model.fields,help:approvals.field_approval_request__message_has_error
 #: model:ir.model.fields,help:approvals.field_approval_request__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
-msgstr ""
+msgstr "Si coché, certains messages ont une erreur de distribution."
 
 #. module: approvals
 #: model:ir.model.fields,help:approvals.field_approval_category__automated_sequence
@@ -477,18 +484,22 @@ msgid ""
 "If checked, the Approval Requests will have an automated generated name "
 "based on the given code."
 msgstr ""
+"Si coché, les demandes d'approbation auront un nom généré automatiquement "
+"basé sur le code donné."
 
 #. module: approvals
 #: model:ir.model.fields,help:approvals.field_approval_category__approver_sequence
 #: model:ir.model.fields,help:approvals.field_approval_request__approver_sequence
 msgid "If checked, the approvers have to approve in a specific sequence."
 msgstr ""
+"Si coché, les approbateurs doivent approuver dans une séquence spécifique."
 
 #. module: approvals
 #: model:ir.model.fields,help:approvals.field_approval_category__active
 msgid ""
 "If unchecked, it will allow you to hide the category without removing it."
 msgstr ""
+"Si décoché, cela vous permettra de masquer la catégorie sans la supprimer."
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_category__image
@@ -500,7 +511,7 @@ msgstr ""
 #: model:ir.model.fields,help:approvals.field_approval_category__image
 #: model:ir.model.fields,help:approvals.field_approval_request__category_image
 msgid "Image for the kanban view"
-msgstr ""
+msgstr "Image pour la vue Kanban"
 
 #. module: approvals
 #: model:ir.model.fields,help:approvals.field_approval_category__approval_type
@@ -511,22 +522,22 @@ msgstr "Type d'approbation interne."
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_category__invalid_minimum
 msgid "Invalid Minimum"
-msgstr ""
+msgstr "Minimum invalide"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_category__invalid_minimum_warning
 msgid "Invalid Minimum Warning"
-msgstr ""
+msgstr "Avertissement de minimum invalide"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_request__message_is_follower
 msgid "Is Follower"
-msgstr ""
+msgstr "Est un abonné"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_approver__required
 msgid "Is Required"
-msgstr ""
+msgstr "Est requis"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_approver__write_uid
@@ -535,7 +546,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:approvals.field_approval_product_line__write_uid
 #: model:ir.model.fields,field_description:approvals.field_approval_request__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Dernière mise à jour par"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_approver__write_date
@@ -544,7 +555,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:approvals.field_approval_product_line__write_date
 #: model:ir.model.fields,field_description:approvals.field_approval_request__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Dernière mise à jour le"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_category__has_location
@@ -553,28 +564,28 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:approvals.approval_category_view_form
 #: model_terms:ir.ui.view,arch_db:approvals.approval_request_view_tree
 msgid "Location"
-msgstr ""
+msgstr "Emplacement"
 
 #. module: approvals
 #: model:ir.ui.menu,name:approvals.approvals_menu_manager
 msgid "Manager"
-msgstr ""
+msgstr "Responsable"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_category__manager_approval
 msgid "Manager Approval"
-msgstr ""
+msgstr "Approbation du responsable"
 
 #. module: approvals
 #: model:res.groups,name:approvals.group_approval_manager_all
 #: model:res.groups.privilege,name:approvals.privilege_approval_manager_all
 msgid "Manager: Approve all requests"
-msgstr ""
+msgstr "Responsable : Approuver toutes les demandes"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_request__message_has_error
 msgid "Message Delivery error"
-msgstr ""
+msgstr "Erreur de distribution du message"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_request__message_ids
@@ -585,18 +596,18 @@ msgstr ""
 #: model:ir.model.fields,field_description:approvals.field_approval_category__approval_minimum
 #: model:ir.model.fields,field_description:approvals.field_approval_request__approval_minimum
 msgid "Minimum Approval"
-msgstr ""
+msgstr "Approbation minimum"
 
 #. module: approvals
 #: model:ir.model.fields,help:approvals.field_approval_category__approval_minimum
 #: model:ir.model.fields,help:approvals.field_approval_request__approval_minimum
 msgid "Minimum number of approvals required to confirm a request."
-msgstr ""
+msgstr "Nombre minimum d'approbations requises pour confirmer une demande."
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_request__my_activity_date_deadline
 msgid "My Activity Deadline"
-msgstr ""
+msgstr "Date limite de mon activité"
 
 #. module: approvals
 #: model:ir.ui.menu,name:approvals.approvals_menu_my_approvals
@@ -606,12 +617,12 @@ msgstr "Mes validations"
 #. module: approvals
 #: model_terms:ir.ui.view,arch_db:approvals.approval_search_view_search
 msgid "My Approvals to Review"
-msgstr ""
+msgstr "Mes approbations à examiner"
 
 #. module: approvals
 #: model_terms:ir.ui.view,arch_db:approvals.approval_search_view_search
 msgid "My Request"
-msgstr ""
+msgstr "Ma demande"
 
 #. module: approvals
 #: model:ir.actions.act_window,name:approvals.approval_request_action
@@ -623,13 +634,13 @@ msgstr "Mes demandes"
 #: model:ir.model.fields,field_description:approvals.field_approval_category__name
 #: model:ir.model.fields,field_description:approvals.field_approval_request__name
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
 #. module: approvals
 #: model:ir.model.fields.selection,name:approvals.selection__approval_approver__status__new
 #: model:ir.model.fields.selection,name:approvals.selection__approval_request__user_status__new
 msgid "New"
-msgstr ""
+msgstr "Nouveau"
 
 #. module: approvals
 #: model_terms:ir.ui.view,arch_db:approvals.approval_category_view_kanban
@@ -639,17 +650,17 @@ msgstr "Nouvelle demande"
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_request__activity_date_deadline
 msgid "Next Activity Deadline"
-msgstr ""
+msgstr "Date limite de l'activité suivante"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_request__activity_summary
 msgid "Next Activity Summary"
-msgstr ""
+msgstr "Résumé de l'activité suivante"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_request__activity_type_id
 msgid "Next Activity Type"
-msgstr ""
+msgstr "Type d'activité suivante"
 
 #. module: approvals
 #: model:ir.model.fields.selection,name:approvals.selection__approval_category__has_amount__no
@@ -664,32 +675,32 @@ msgstr ""
 #: model:ir.model.fields.selection,name:approvals.selection__approval_category__manager_approval__no
 #: model:ir.model.fields.selection,name:approvals.selection__approval_category__requirer_document__no
 msgid "None"
-msgstr ""
+msgstr "Aucun"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_request__message_needaction_counter
 msgid "Number of Actions"
-msgstr ""
+msgstr "Nombre d'actions"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_request__attachment_number
 msgid "Number of Attachments"
-msgstr ""
+msgstr "Nombre de pièces jointes"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_request__message_has_error_counter
 msgid "Number of errors"
-msgstr ""
+msgstr "Nombre d'erreurs"
 
 #. module: approvals
 #: model:ir.model.fields,help:approvals.field_approval_request__message_needaction_counter
 msgid "Number of messages requiring action"
-msgstr ""
+msgstr "Nombre de messages nécessitant une action"
 
 #. module: approvals
 #: model:ir.model.fields,help:approvals.field_approval_request__message_has_error_counter
 msgid "Number of messages with delivery error"
-msgstr ""
+msgstr "Nombre de messages avec erreur de distribution"
 
 #. module: approvals
 #: model:ir.model.fields.selection,name:approvals.selection__approval_category__has_amount__optional
@@ -704,7 +715,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:approvals.selection__approval_category__manager_approval__optional
 #: model:ir.model.fields.selection,name:approvals.selection__approval_category__requirer_document__optional
 msgid "Optional"
-msgstr ""
+msgstr "Optionnel"
 
 #. module: approvals
 #: model_terms:ir.ui.view,arch_db:approvals.approval_category_view_form
@@ -714,13 +725,13 @@ msgstr ""
 #. module: approvals
 #: model_terms:ir.ui.view,arch_db:approvals.approval_category_view_form
 msgid "Payment"
-msgstr ""
+msgstr "Paiement"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_category__has_payment_method
 #: model:ir.model.fields,field_description:approvals.field_approval_request__has_payment_method
 msgid "Payment Method"
-msgstr ""
+msgstr "Mode de paiement"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_category__has_period
@@ -728,7 +739,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:approvals.approval_category_view_form
 #: model_terms:ir.ui.view,arch_db:approvals.approval_request_view_form
 msgid "Period"
-msgstr ""
+msgstr "Période"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_category__has_product
@@ -736,18 +747,18 @@ msgstr ""
 #: model:ir.model.fields,field_description:approvals.field_approval_request__has_product
 #: model_terms:ir.ui.view,arch_db:approvals.approval_category_view_form
 msgid "Product"
-msgstr ""
+msgstr "Produit"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_request__product_line_ids
 #: model_terms:ir.ui.view,arch_db:approvals.approval_request_view_form
 msgid "Products"
-msgstr ""
+msgstr "Produits"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_request__approval_properties
 msgid "Properties"
-msgstr ""
+msgstr "Propriétés"
 
 #. module: approvals
 #: model:ir.model.fields,help:approvals.field_approval_category__description
@@ -755,6 +766,8 @@ msgid ""
 "Provide a detailed description or instructions for the users creating "
 "requests in this category."
 msgstr ""
+"Fournissez une description détaillée ou des instructions pour les "
+"utilisateurs créant des demandes dans cette catégorie."
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_category__has_quantity
@@ -763,12 +776,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:approvals.field_approval_request__quantity
 #: model_terms:ir.ui.view,arch_db:approvals.approval_category_view_form
 msgid "Quantity"
-msgstr ""
+msgstr "Quantité"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_request__rating_ids
 msgid "Ratings"
-msgstr ""
+msgstr "Évaluations"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_category__has_reference
@@ -776,12 +789,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:approvals.field_approval_request__reference
 #: model_terms:ir.ui.view,arch_db:approvals.approval_category_view_form
 msgid "Reference"
-msgstr ""
+msgstr "Référence"
 
 #. module: approvals
 #: model_terms:ir.ui.view,arch_db:approvals.approval_request_view_form
 msgid "Refuse"
-msgstr ""
+msgstr "Refuser"
 
 #. module: approvals
 #: model:ir.model.fields.selection,name:approvals.selection__approval_approver__status__refused
@@ -789,99 +802,99 @@ msgstr ""
 #: model:ir.model.fields.selection,name:approvals.selection__approval_request__user_status__refused
 #: model_terms:ir.ui.view,arch_db:approvals.approval_search_view_search
 msgid "Refused"
-msgstr ""
+msgstr "Refusé"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_approver__request_id
 #: model_terms:ir.ui.view,arch_db:approvals.approval_request_view_form
 msgid "Request"
-msgstr ""
+msgstr "Demande"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_request__request_owner_id
 #: model_terms:ir.ui.view,arch_db:approvals.approval_search_view_search
 msgid "Request Owner"
-msgstr ""
+msgstr "Propriétaire de la demande"
 
 #. module: approvals
 #: model_terms:ir.ui.view,arch_db:approvals.approval_request_view_tree
 msgid "Request Start"
-msgstr ""
+msgstr "Début de la demande"
 
 #. module: approvals
 #: model_terms:ir.ui.view,arch_db:approvals.approval_search_view_search
 msgid "Request Status"
-msgstr ""
+msgstr "Statut de la demande"
 
 #. module: approvals
 #: model_terms:ir.ui.view,arch_db:approvals.approval_request_view_tree
 msgid "Request To"
-msgstr ""
+msgstr "Demander à"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_category__request_to_validate_count
 msgid "Requests to Validate"
-msgstr ""
+msgstr "Demandes à valider"
 
 #. module: approvals
 #: model:ir.model.fields,help:approvals.field_approval_category__has_partner
 #: model:ir.model.fields,help:approvals.field_approval_request__has_partner
 msgid "Require a contact (partner) on the request."
-msgstr ""
+msgstr "Exiger un contact (partenaire) sur la demande."
 
 #. module: approvals
 #: model:ir.model.fields,help:approvals.field_approval_category__has_reference
 #: model:ir.model.fields,help:approvals.field_approval_request__has_reference
 msgid "Require a custom reference."
-msgstr ""
+msgstr "Exiger une référence personnalisée."
 
 #. module: approvals
 #: model:ir.model.fields,help:approvals.field_approval_category__has_date
 #: model:ir.model.fields,help:approvals.field_approval_request__has_date
 msgid "Require a date on the request."
-msgstr ""
+msgstr "Exiger une date sur la demande."
 
 #. module: approvals
 #: model:ir.model.fields,help:approvals.field_approval_category__has_location
 #: model:ir.model.fields,help:approvals.field_approval_request__has_location
 msgid "Require a location."
-msgstr ""
+msgstr "Exiger un emplacement."
 
 #. module: approvals
 #: model:ir.model.fields,help:approvals.field_approval_category__has_payment_method
 #: model:ir.model.fields,help:approvals.field_approval_request__has_payment_method
 msgid "Require a payment method."
-msgstr ""
+msgstr "Exiger un mode de paiement."
 
 #. module: approvals
 #: model:ir.model.fields,help:approvals.field_approval_category__has_period
 #: model:ir.model.fields,help:approvals.field_approval_request__has_period
 msgid "Require a period (start and end date)."
-msgstr ""
+msgstr "Exiger une période (date de début et de fin)."
 
 #. module: approvals
 #: model:ir.model.fields,help:approvals.field_approval_category__has_quantity
 #: model:ir.model.fields,help:approvals.field_approval_request__has_quantity
 msgid "Require a quantity."
-msgstr ""
+msgstr "Exiger une quantité."
 
 #. module: approvals
 #: model:ir.model.fields,help:approvals.field_approval_category__has_product
 #: model:ir.model.fields,help:approvals.field_approval_request__has_product
 msgid "Require a specific product."
-msgstr ""
+msgstr "Exiger un produit spécifique."
 
 #. module: approvals
 #: model:ir.model.fields,help:approvals.field_approval_category__has_amount
 #: model:ir.model.fields,help:approvals.field_approval_request__has_amount
 msgid "Require an amount."
-msgstr ""
+msgstr "Exiger un montant."
 
 #. module: approvals
 #: model:ir.model.fields,help:approvals.field_approval_category__requirer_document
 #: model:ir.model.fields,help:approvals.field_approval_request__requirer_document
 msgid "Require an attached document."
-msgstr ""
+msgstr "Exiger un document joint."
 
 #. module: approvals
 #: model:ir.model.fields.selection,name:approvals.selection__approval_category__has_amount__required
@@ -896,12 +909,12 @@ msgstr ""
 #: model:ir.model.fields.selection,name:approvals.selection__approval_category__manager_approval__required
 #: model:ir.model.fields.selection,name:approvals.selection__approval_category__requirer_document__required
 msgid "Required"
-msgstr ""
+msgstr "Requis"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_request__activity_user_id
 msgid "Responsible User"
-msgstr ""
+msgstr "Utilisateur responsable"
 
 #. module: approvals
 #: model:ir.model.fields,help:approvals.field_approval_approver__company_id
@@ -910,18 +923,18 @@ msgstr ""
 #: model:ir.model.fields,help:approvals.field_approval_product_line__company_id
 #: model:ir.model.fields,help:approvals.field_approval_request__company_id
 msgid "Restrict this category to a specific company."
-msgstr ""
+msgstr "Restreindre cette catégorie à une société spécifique."
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_request__message_has_sms_error
 msgid "SMS Delivery error"
-msgstr ""
+msgstr "Erreur de distribution SMS"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_approver__sequence
 #: model:ir.model.fields,field_description:approvals.field_approval_category__sequence
 msgid "Sequence"
-msgstr ""
+msgstr "Séquence"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_category__sequence_code
@@ -931,18 +944,18 @@ msgstr "Code de Séquence"
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_category__sequence_id
 msgid "Sequence ID"
-msgstr ""
+msgstr "ID de séquence"
 
 #. module: approvals
 #: model:ir.model.fields,help:approvals.field_approval_category__approver_ids
 msgid "Specific approvers for this category."
-msgstr ""
+msgstr "Approbateurs spécifiques pour cette catégorie."
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_approver__status
 #: model:ir.model.fields,field_description:approvals.field_approval_request__request_status
 msgid "Status"
-msgstr ""
+msgstr "Statut"
 
 #. module: approvals
 #: model:ir.model.fields,help:approvals.field_approval_request__activity_state
@@ -952,27 +965,31 @@ msgid ""
 "Today: Activity date is today\n"
 "Planned: Future activities."
 msgstr ""
+"Statut basé sur les activités\n"
+"En retard : La date d'échéance est déjà dépassée\n"
+"Aujourd'hui : La date de l'activité est aujourd'hui\n"
+"Planifié : Activités futures."
 
 #. module: approvals
 #: model_terms:ir.ui.view,arch_db:approvals.approval_request_view_form
 msgid "Submit"
-msgstr ""
+msgstr "Soumettre"
 
 #. module: approvals
 #: model:ir.model.fields.selection,name:approvals.selection__approval_request__request_status__pending
 msgid "Submitted"
-msgstr ""
+msgstr "Soumis"
 
 #. module: approvals
 #: model:ir.model.fields,help:approvals.field_approval_category__sequence_id
 msgid "The ir.sequence used to generate request names."
-msgstr ""
+msgstr "La séquence ir.sequence utilisée pour générer les noms des demandes."
 
 #. module: approvals
 #: model:ir.model.fields.selection,name:approvals.selection__approval_approver__status__pending
 #: model:ir.model.fields.selection,name:approvals.selection__approval_request__user_status__pending
 msgid "To Approve"
-msgstr ""
+msgstr "À approuver"
 
 #. module: approvals
 #: model_terms:ir.ui.view,arch_db:approvals.approval_category_view_kanban
@@ -982,22 +999,22 @@ msgstr "À examiner :"
 #. module: approvals
 #: model:ir.model.fields.selection,name:approvals.selection__approval_request__request_status__new
 msgid "To Submit"
-msgstr ""
+msgstr "À soumettre"
 
 #. module: approvals
 #: model:ir.model.fields,help:approvals.field_approval_request__activity_exception_decoration
 msgid "Type of the exception activity on record."
-msgstr ""
+msgstr "Type de l'activité d'exception sur l'enregistrement."
 
 #. module: approvals
 #: model_terms:ir.ui.view,arch_db:approvals.approval_category_view_kanban
 msgid "Unarchive"
-msgstr ""
+msgstr "Désarchiver"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_product_line__product_uom_id
 msgid "Unit of Measure"
-msgstr ""
+msgstr "Unité de mesure"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_approver__user_id
@@ -1005,50 +1022,50 @@ msgstr ""
 #: model:res.groups,name:approvals.group_approval_user
 #: model:res.groups.privilege,name:approvals.privilege_approval_user
 msgid "User"
-msgstr ""
+msgstr "Utilisateur"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_request__user_status
 msgid "User Status"
-msgstr ""
+msgstr "Statut de l'utilisateur"
 
 #. module: approvals
 #: model:ir.model.fields,help:approvals.field_approval_category__user_ids
 msgid "Users who are configured to approve this category."
-msgstr ""
+msgstr "Utilisateurs configurés pour approuver cette catégorie."
 
 #. module: approvals
 #: model:ir.model.fields.selection,name:approvals.selection__approval_approver__status__waiting
 #: model:ir.model.fields.selection,name:approvals.selection__approval_request__user_status__waiting
 msgid "Waiting"
-msgstr ""
+msgstr "En attente"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_request__website_message_ids
 msgid "Website Messages"
-msgstr ""
+msgstr "Messages du site web"
 
 #. module: approvals
 #: model:ir.model.fields,help:approvals.field_approval_request__website_message_ids
 msgid "Website communication history"
-msgstr ""
+msgstr "Historique de communication du site web"
 
 #. module: approvals
 #: model_terms:ir.ui.view,arch_db:approvals.approval_request_view_form
 msgid "Withdraw"
-msgstr ""
+msgstr "Retirer"
 
 #. module: approvals
 #: model_terms:ir.ui.view,arch_db:approvals.approval_request_view_form
 msgid "e.g. Brussels"
-msgstr ""
+msgstr "ex. Bruxelles"
 
 #. module: approvals
 #: model_terms:ir.ui.view,arch_db:approvals.approval_category_view_form
 msgid "e.g. Procurement"
-msgstr ""
+msgstr "ex. Approvisionnement"
 
 #. module: approvals
 #: model_terms:ir.ui.view,arch_db:approvals.approval_request_view_form
 msgid "to:"
-msgstr ""
+msgstr "à :"
