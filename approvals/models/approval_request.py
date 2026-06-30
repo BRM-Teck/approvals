@@ -95,26 +95,18 @@ class ApprovalRequest(models.Model):
     def action_confirm(self):
         self.ensure_one()
         self.request_status = 'pending'
-        
-        if self.approver_sequence:
-            approvers = self.approver_ids.sorted('sequence')
-            if approvers:
-                approvers[0].status = 'pending'
-                approvers[1:].write({'status': 'waiting'})
-        else:
-            self.approver_ids.write({'status': 'pending'})
+        self.approver_ids.write({'status': 'pending'})
         
         # Notification and activities for approvers
-        pending_approvers = self.approver_ids.filtered(lambda a: a.status == 'pending')
-        approver_users = pending_approvers.mapped('user_id')
+        approver_users = self.approver_ids.mapped('user_id')
         approver_partners = approver_users.mapped('partner_id')
         if approver_partners:
             self.message_subscribe(partner_ids=approver_partners.ids)
             
-            self.message_post(
-                body=_("The request has been submitted and is pending for your approval."),
-                partner_ids=approver_partners.ids,
-            )
+        self.message_post(
+            body=_("The request has been submitted and is pending for your approval."),
+            partner_ids=approver_partners.ids,
+        )
         
         for user in approver_users:
             self.activity_schedule(
@@ -125,47 +117,27 @@ class ApprovalRequest(models.Model):
 
     def action_approve(self):
         self.ensure_one()
-        approver = self.approver_ids.filtered(lambda a: a.user_id == self.env.user and a.status == 'pending')
+        approver = self.approver_ids.filtered(lambda a: a.user_id == self.env.user)
         if approver:
             approver.status = 'approved'
-            
-            # If sequential, find next approver
-            if self.approver_sequence:
-                waiting_approvers = self.approver_ids.filtered(lambda a: a.status == 'waiting').sorted('sequence')
-                if waiting_approvers:
-                    next_approver = waiting_approvers[0]
-                    next_approver.status = 'pending'
-                    if next_approver.user_id.partner_id:
-                        self.message_post(
-                            body=_("It is your turn to review this approval request."),
-                            partner_ids=next_approver.user_id.partner_id.ids,
-                        )
-                    self.activity_schedule(
-                        'mail.mail_activity_data_todo',
-                        user_id=next_approver.user_id.id,
-                        note=_("Please review this approval request.")
-                    )
             
         # Check if all required approvers have approved
         required_approvers = self.approver_ids.filtered(lambda a: a.required)
         all_approved = all(a.status == 'approved' for a in required_approvers)
         
-        # Also check if there are still pending/waiting approvers
-        remaining_approvers = self.approver_ids.filtered(lambda a: a.status in ('pending', 'waiting'))
-        
-        if (not required_approvers and not remaining_approvers) or (required_approvers and all_approved and not remaining_approvers):
+        if (not required_approvers and approver) or all_approved:
             self.request_status = 'approved'
             self.message_post(
                 body=_("The request has been approved."),
                 partner_ids=self.request_owner_id.partner_id.ids,
             )
             
-        # Clear activities for the current user
-        self.activity_search(['mail.mail_activity_data_todo'], user_id=self.env.user.id).unlink()
+        # Clear activities
+        self.activity_unlink(['mail.mail_activity_data_todo'])
 
     def action_refuse(self):
         self.ensure_one()
-        approver = self.approver_ids.filtered(lambda a: a.user_id == self.env.user and a.status == 'pending')
+        approver = self.approver_ids.filtered(lambda a: a.user_id == self.env.user)
         if approver:
             approver.status = 'refused'
             
@@ -175,7 +147,7 @@ class ApprovalRequest(models.Model):
             partner_ids=self.request_owner_id.partner_id.ids,
         )
         # Clear activities
-        self.activity_search(['mail.mail_activity_data_todo']).unlink()
+        self.activity_unlink(['mail.mail_activity_data_todo'])
 
     def action_withdraw(self):
         self.ensure_one()
