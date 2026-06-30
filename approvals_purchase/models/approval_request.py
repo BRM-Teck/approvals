@@ -11,21 +11,29 @@ class ApprovalRequest(models.Model):
 
     def action_create_purchase_orders(self):
         self.ensure_one()
-        # Group lines by partner_id if product lines have partner? No, approval request has partner_id
-        if not self.partner_id:
-            return # Require a partner to create a PO
-            
-        po = self.env['purchase.order'].create({
-            'partner_id': self.partner_id.id,
-            'approval_request_id': self.id,
-            'origin': self.name,
-            'order_line': [(0, 0, {
-                'product_id': line.product_id.id,
-                'name': line.description or line.product_id.name,
-                'product_qty': line.quantity,
-                'product_uom': line.product_uom_id.id or line.product_id.uom_po_id.id,
-            }) for line in self.product_line_ids]
-        })
+        # Group lines by seller_id, fallback to partner_id
+        default_partner = self.partner_id
+        lines_by_partner = {}
+        for line in self.product_line_ids:
+            partner = line.seller_id or default_partner
+            if not partner:
+                continue
+            if partner not in lines_by_partner:
+                lines_by_partner[partner] = []
+            lines_by_partner[partner].append(line)
+        
+        for partner, lines in lines_by_partner.items():
+            po = self.env['purchase.order'].create({
+                'partner_id': partner.id,
+                'approval_request_id': self.id,
+                'origin': self.name,
+                'order_line': [(0, 0, {
+                    'product_id': line.product_id.id,
+                    'name': line.description or line.product_id.name,
+                    'product_qty': line.quantity,
+                    'product_uom': line.product_uom_id.id or line.product_id.uom_po_id.id,
+                }) for line in lines]
+            })
         
         return self.action_view_purchase_orders()
 
