@@ -14,7 +14,7 @@ class ApprovalCategory(models.Model):
     company_id = fields.Many2one('res.company', string='Company', default=lambda self: self.env.company, help="Restrict this category to a specific company.")
     
     # Options
-    approval_type = fields.Selection([('purchase', 'Purchase'), ('approval', 'Approval')], string='Approval Type', default='approval', help="Internal approval type.")
+    approval_type = fields.Selection([('approval', 'Approval')], string='Approval Type', default='approval', help="Internal approval type.")
     requirer_document = fields.Selection([('required', 'Required'), ('optional', 'Optional'), ('no', 'None')], string='Document', default='optional', required=True, help="Require an attached document.")
     has_partner = fields.Selection([('required', 'Required'), ('optional', 'Optional'), ('no', 'None')], string='Contact', default='no', required=True, help="Require a contact (partner) on the request.")
     has_date = fields.Selection([('required', 'Required'), ('optional', 'Optional'), ('no', 'None')], string='Date', default='no', required=True, help="Require a date on the request.")
