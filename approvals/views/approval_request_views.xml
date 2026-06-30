@@ -255,11 +255,4 @@
         <field name="view_mode">list,kanban,form</field>
     </record>
 
-    <!-- Menus -->
-    <menuitem id="approvals_request_menu" name="My Approvals" parent="approvals_menu_root" sequence="10"/>
-    <menuitem id="approvals_request_menu_my_requests" name="My Requests" parent="approvals_request_menu" action="approval_request_action" sequence="10"/>
-    <menuitem id="approvals_request_menu_to_review" name="Approvals to Review" parent="approvals_menu_root" action="approval_request_action_to_review" sequence="20"/>
-    <menuitem id="approvals_request_menu_manager" name="Manager" parent="approvals_menu_root" sequence="30"/>
-    <menuitem id="approvals_request_menu_all" name="All Approvals" parent="approvals_request_menu_manager" action="approval_request_action_all" sequence="10"/>
-
 </odoo>
