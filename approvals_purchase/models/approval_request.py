@@ -9,6 +9,13 @@ class ApprovalRequest(models.Model):
         for request in self:
             request.purchase_order_count = self.env['purchase.order'].search_count([('approval_request_id', '=', request.id)])
 
+    def action_approve(self):
+        super().action_approve()
+        for request in self:
+            if request.request_status == 'approved' and request.category_id.approval_type == 'purchase':
+                if not request.purchase_order_count:
+                    request.action_create_purchase_orders()
+
     def action_create_purchase_orders(self):
         self.ensure_one()
         # Group lines by seller_id, fallback to partner_id
