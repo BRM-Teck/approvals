@@ -1,0 +1,71 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* approvals
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-30 00:00+0000\n"
+"PO-Revision-Date: 2026-06-30 00:00+0000\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: approvals
+#: model:ir.ui.menu,name:approvals.approvals_menu_root
+msgid "Approvals"
+msgstr "Validations"
+
+#. module: approvals
+#: model:ir.ui.menu,name:approvals.approvals_menu_dashboard
+msgid "Dashboard"
+msgstr "Tableau de bord"
+
+#. module: approvals
+#: model:ir.ui.menu,name:approvals.approvals_menu_my_approvals
+msgid "My Approvals"
+msgstr "Mes validations"
+
+#. module: approvals
+#: model:ir.ui.menu,name:approvals.approvals_menu_manager
+msgid "Manager"
+msgstr "Manager"
+
+#. module: approvals
+#: model:ir.ui.menu,name:approvals.approvals_menu_config
+msgid "Configuration"
+msgstr "Configuration"
+
+#. module: approvals
+#: model:ir.ui.menu,name:approvals.approvals_category_menu_config
+#: model:ir.actions.act_window,name:approvals.approval_category_action
+msgid "Approval Categories"
+msgstr "Catégories de validation"
+
+#. module: approvals
+#: model_terms:ir.ui.view,arch_db:approvals.approval_category_view_kanban
+msgid "New Request"
+msgstr "Nouvelle demande"
+
+#. module: approvals
+#: model_terms:ir.ui.view,arch_db:approvals.approval_category_view_kanban
+msgid "To Review:"
+msgstr "À examiner :"
+
+#. module: approvals
+#: model:ir.ui.menu,name:approvals.menu_approval_request_my_approvals
+msgid "My Requests"
+msgstr "Mes demandes"
+
+#. module: approvals
+#: model:ir.ui.menu,name:approvals.menu_approval_request_to_review
+msgid "Approvals to Review"
+msgstr "Validations à examiner"
+
+#. module: approvals
+#: model:ir.ui.menu,name:approvals.menu_approval_request_all
+msgid "All Approvals"
+msgstr "Toutes les validations"

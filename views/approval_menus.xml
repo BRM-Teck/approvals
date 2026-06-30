@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Action for Dashboard -->
+    <record id="approval_category_action_dashboard" model="ir.actions.act_window">
+        <field name="name">Dashboard</field>
+        <field name="res_model">approval.category</field>
+        <field name="view_mode">kanban,list,form</field>
+    </record>
+
+    <!-- Main Menu -->
+    <menuitem id="approvals_menu_root" name="Approvals" web_icon="approvals,static/description/icon.png" sequence="220"/>
+
+    <!-- Dashboard Menu -->
+    <menuitem id="approvals_menu_dashboard" name="Dashboard" parent="approvals_menu_root" action="approval_category_action_dashboard" sequence="10"/>
+
+    <!-- My Approvals Menu -->
+    <menuitem id="approvals_menu_my_approvals" name="My Approvals" parent="approvals_menu_root" sequence="20"/>
+    <menuitem id="menu_approval_request_my_approvals" name="My Requests" parent="approvals_menu_my_approvals" action="approval_request_action" sequence="10"/>
+
+    <!-- Manager Menu -->
+    <menuitem id="approvals_menu_manager" name="Manager" parent="approvals_menu_root" sequence="30"/>
+    <menuitem id="menu_approval_request_to_review" name="Approvals to Review" parent="approvals_menu_manager" action="approval_request_action_to_review" sequence="10"/>
+    <menuitem id="menu_approval_request_all" name="All Approvals" parent="approvals_menu_manager" action="approval_request_action_all" sequence="20"/>
+
+    <!-- Configuration Menu -->
+    <menuitem id="approvals_menu_config" name="Configuration" parent="approvals_menu_root" sequence="100"/>
+    <menuitem id="approvals_category_menu_config" name="Approval Categories" parent="approvals_menu_config" action="approval_category_action" sequence="10"/>
+</odoo>
