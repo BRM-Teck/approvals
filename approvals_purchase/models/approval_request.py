@@ -38,7 +38,7 @@ class ApprovalRequest(models.Model):
                     'product_id': line.product_id.id,
                     'name': line.description or line.product_id.name,
                     'product_qty': line.quantity,
-                    'product_uom': line.product_uom_id.id or line.product_id.uom_po_id.id,
+                    'product_uom': line.product_uom_id.id or line.product_id.uom_id.id,
                 }) for line in lines]
             })
         
