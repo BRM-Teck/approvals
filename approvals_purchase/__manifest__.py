@@ -10,6 +10,7 @@
     'license': 'OPL-1',
     'depends': ['approvals', 'purchase'],
     'data': [
+        'data/approval_category_data.xml',
         'views/approval_request_views.xml',
     ],
     'installable': True,
