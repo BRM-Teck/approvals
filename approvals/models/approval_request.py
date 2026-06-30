@@ -95,6 +95,7 @@ class ApprovalRequest(models.Model):
     def action_confirm(self):
         self.ensure_one()
         self.request_status = 'pending'
+        self.approver_ids.write({'status': 'pending'})
         
         # Notification and activities for approvers
         approver_users = self.approver_ids.mapped('user_id')
@@ -116,16 +117,30 @@ class ApprovalRequest(models.Model):
 
     def action_approve(self):
         self.ensure_one()
-        self.request_status = 'approved'
-        self.message_post(
-            body=_("The request has been approved."),
-            partner_ids=self.request_owner_id.partner_id.ids,
-        )
+        approver = self.approver_ids.filtered(lambda a: a.user_id == self.env.user)
+        if approver:
+            approver.status = 'approved'
+            
+        # Check if all required approvers have approved
+        required_approvers = self.approver_ids.filtered(lambda a: a.required)
+        all_approved = all(a.status == 'approved' for a in required_approvers)
+        
+        if (not required_approvers and approver) or all_approved:
+            self.request_status = 'approved'
+            self.message_post(
+                body=_("The request has been approved."),
+                partner_ids=self.request_owner_id.partner_id.ids,
+            )
+            
         # Clear activities
         self.activity_unlink(['mail.mail_activity_data_todo'])
 
     def action_refuse(self):
         self.ensure_one()
+        approver = self.approver_ids.filtered(lambda a: a.user_id == self.env.user)
+        if approver:
+            approver.status = 'refused'
+            
         self.request_status = 'refused'
         self.message_post(
             body=_("The request has been refused."),
