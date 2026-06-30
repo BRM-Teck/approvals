@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="approval_request_view_form" model="ir.ui.view">
+        <field name="name">approval.request.view.form.inherit.purchase</field>
+        <field name="model">approval.request</field>
+        <field name="inherit_id" ref="approvals.approval_request_view_form"/>
+        <field name="arch" type="xml">
+            <!-- Add Create RFQ button -->
+            <xpath expr="//button[@name='action_draft']" position="after">
+                <button name="action_create_purchase_orders" type="object" string="Create RFQ's"
+                        invisible="approval_type != 'purchase' or request_status != 'approved'"
+                        class="btn-primary" data-hotkey="o"/>
+            </xpath>
+            
+            <!-- Add Smart Button -->
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_purchase_orders" type="object" class="oe_stat_button" icon="fa-credit-card"
+                        invisible="purchase_order_count == 0">
+                    <field name="purchase_order_count" widget="statinfo" string="Purchase Orders"/>
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>
