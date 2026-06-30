@@ -12,8 +12,7 @@ Ce module permet l'intégration entre le module de validations (approvals) et l'
     'website': 'https://github.com/BRM-Teck/approvals',
     'depends': ['approvals', 'documents'],
     'data': [
-        # 'security/ir.model.access.csv',
-        # 'views/approval_request_views.xml',
+        'views/approval_category_views.xml',
     ],
     'installable': True,
     'auto_install': False,

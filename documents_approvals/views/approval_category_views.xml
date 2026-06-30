@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- View modification for approval.category -->
+    <record id="approval_category_view_form_documents" model="ir.ui.view">
+        <field name="name">approval.category.view.form.documents</field>
+        <field name="model">approval.category</field>
+        <field name="inherit_id" ref="approvals.approval_category_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='options']" position="after">
+                <page name="documents" string="Documents Workspace">
+                    <group>
+                        <group>
+                            <field name="document_folder_id"/>
+                            <field name="document_tag_ids" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
