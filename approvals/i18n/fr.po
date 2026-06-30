@@ -69,3 +69,24 @@ msgstr "Validations à examiner"
 #: model:ir.ui.menu,name:approvals.menu_approval_request_all
 msgid "All Approvals"
 msgstr "Toutes les validations"
+
+#. module: approvals
+#: model:ir.model.fields,field_description:approvals.field_approval_category__automated_sequence
+#: model:ir.model.fields,field_description:approvals.field_approval_request__automated_sequence
+msgid "Automated Sequence"
+msgstr "Séquence Automatique"
+
+#. module: approvals
+#: model:ir.model.fields,field_description:approvals.field_approval_category__sequence_code
+msgid "Sequence Code"
+msgstr "Code de Séquence"
+
+#. module: approvals
+#: model:ir.model.fields,field_description:approvals.field_approval_category_approver__approver_sequence
+msgid "Approver Sequence"
+msgstr "Séquence de l'approbateur"
+
+#. module: approvals
+#, python-format
+msgid "Approval Sequence %s"
+msgstr "Séquence d'approbation %s"
