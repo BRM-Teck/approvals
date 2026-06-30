@@ -13,7 +13,7 @@ class ApprovalApprover(models.Model):
         ('approved', 'Approved'),
         ('refused', 'Refused'),
         ('cancel', 'Cancel'),
-    ], string='Status', default='new', required=True)
+    ], string='Status', default='new', required=True, copy=False)
     
     required = fields.Boolean(string='Is Required', default=False)
     sequence = fields.Integer(string='Sequence', default=10)

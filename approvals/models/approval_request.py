@@ -7,7 +7,7 @@ class ApprovalRequest(models.Model):
     _order = 'name'
 
     active = fields.Boolean(string='Active', default=True)
-    name = fields.Char(string='Name', required=True, default='New')
+    name = fields.Char(string='Name', required=True, default='New', copy=False)
     request_owner_id = fields.Many2one('res.users', string='Request Owner', default=lambda self: self.env.user, required=True, tracking=True)
     category_id = fields.Many2one('approval.category', string='Category', required=True, tracking=True)
     category_image = fields.Binary(related='category_id.image')
@@ -32,7 +32,7 @@ class ApprovalRequest(models.Model):
     date = fields.Datetime(string='Date')
     date_start = fields.Datetime(string='Date start')
     date_end = fields.Datetime(string='Date end')
-    date_confirmed = fields.Datetime(string='Date confirmed')
+    date_confirmed = fields.Datetime(string='Date confirmed', copy=False)
     location = fields.Char(string='Location')
     partner_id = fields.Many2one('res.partner', string='Contact')
     quantity = fields.Float(string='Quantity')
@@ -49,7 +49,7 @@ class ApprovalRequest(models.Model):
         ('approved', 'Approved'),
         ('refused', 'Refused'),
         ('cancel', 'Cancel'),
-    ], string='Status', default='new', tracking=True)
+    ], string='Status', default='new', tracking=True, copy=False)
     
     user_status = fields.Selection([
         ('new', 'New'),
@@ -61,8 +61,8 @@ class ApprovalRequest(models.Model):
     ], string='User Status', compute='_compute_user_status')
     
     # Relational
-    approver_ids = fields.One2many('approval.approver', 'request_id', string='Approvers')
-    product_line_ids = fields.One2many('approval.product.line', 'approval_request_id', string='Products')
+    approver_ids = fields.One2many('approval.approver', 'request_id', string='Approvers', copy=True)
+    product_line_ids = fields.One2many('approval.product.line', 'approval_request_id', string='Products', copy=True)
     
     attachment_number = fields.Integer(string='Number of Attachments', compute='_compute_attachment_number')
     approval_properties = fields.Properties(

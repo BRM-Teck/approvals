@@ -9,6 +9,7 @@
             <field name="has_product">required</field>
             <field name="has_quantity">required</field>
             <field name="has_partner">optional</field>
+            <field name="active" eval="True"/>
         </record>
     </data>
 </odoo>
