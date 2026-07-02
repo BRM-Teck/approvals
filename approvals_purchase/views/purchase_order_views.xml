@@ -16,12 +16,12 @@
                  but adding a new button is cleaner. -->
             <xpath expr="//button[@name='button_confirm'][1]" position="attributes">
                 <!-- Draft state confirm button -->
-                <attribute name="invisible">state != 'draft' or (approval_request_id != False and approval_request_status != 'approved')</attribute>
+                <attribute name="invisible">state != 'draft' or approval_request_status != 'approved'</attribute>
             </xpath>
             
             <xpath expr="//button[@name='button_confirm'][2]" position="attributes">
                 <!-- Sent state confirm button -->
-                <attribute name="invisible">state != 'sent' or (approval_request_id != False and approval_request_status != 'approved')</attribute>
+                <attribute name="invisible">state != 'sent' or approval_request_status != 'approved'</attribute>
             </xpath>
 
             <!-- Add Request Approval button -->
