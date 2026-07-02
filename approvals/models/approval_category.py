@@ -124,7 +124,10 @@ class ApprovalCategory(models.Model):
 class ApprovalCategoryApprover(models.Model):
     _name = 'approval.category.approver'
     _description = 'Approval Category Approver'
+    _order = 'sequence, id'
 
     category_id = fields.Many2one('approval.category', string='Category', required=True, ondelete='cascade')
     user_id = fields.Many2one('res.users', string='User', required=True)
     company_id = fields.Many2one(related='category_id.company_id', store=True)
+    sequence = fields.Integer(string='Sequence', default=10)
+    required = fields.Boolean(string='Is Required', default=False)

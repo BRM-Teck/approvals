@@ -73,6 +73,32 @@ class ApprovalRequest(models.Model):
     change_request_owner = fields.Boolean(string='Can Change Request Owner', compute='_compute_change_request_owner')
     has_access_to_request = fields.Boolean(string='Has Access To Request', compute='_compute_has_access_to_request')
 
+    @api.onchange('category_id', 'request_owner_id')
+    def _onchange_category_id(self):
+        self.approver_ids = [(5, 0, 0)]
+        if not self.category_id:
+            return
+            
+        approver_vals_list = []
+        for approver in self.category_id.approver_ids:
+            approver_vals_list.append((0, 0, {
+                'user_id': approver.user_id.id,
+                'required': approver.required,
+                'sequence': approver.sequence,
+            }))
+        
+        if self.category_id.manager_approval in ['required', 'optional'] and self.request_owner_id:
+            employee = self.env['hr.employee'].search([('user_id', '=', self.request_owner_id.id)], limit=1)
+            if employee and employee.parent_id and employee.parent_id.user_id:
+                if employee.parent_id.user_id.id not in [v[2]['user_id'] for v in approver_vals_list]:
+                    approver_vals_list.append((0, 0, {
+                        'user_id': employee.parent_id.user_id.id,
+                        'required': self.category_id.manager_approval == 'required',
+                        'sequence': 5,
+                    }))
+
+        self.approver_ids = approver_vals_list
+
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:
