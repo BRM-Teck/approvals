@@ -30,7 +30,7 @@
     <record id="group_approval_manager" model="res.groups">
         <field name="name">Administrator</field>
         <field name="privilege_id" ref="privilege_approval_manager"/>
-        <field name="implied_ids" eval="[(4, ref('group_approval_user'))]"/>
+        <field name="implied_ids" eval="[(4, ref('group_approval_manager_all'))]"/>
         <field name="user_ids" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
     </record>
     

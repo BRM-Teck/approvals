@@ -15,12 +15,5 @@
             <field name="implied_ids" eval="[(4, ref('approvals.group_approval_user'))]"/>
         </record>
 
-        <!-- 3. Niveau Administrateur -->
-        <record id="approvals.group_approval_manager" model="res.groups">
-            <field name="name">Administrateur (Configuration)</field>
-            <field name="comment">Permet de configurer les catégories de validation et inclut les droits de Super-Approbateur.</field>
-            <!-- Remplace l'implication vers "user" par une implication vers "manager_all" -->
-            <field name="implied_ids" eval="[(6, 0, [ref('approvals.group_approval_manager_all')])]"/>
-        </record>
     </data>
 </odoo>
