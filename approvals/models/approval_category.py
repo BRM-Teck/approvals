@@ -31,7 +31,7 @@ class ApprovalCategory(models.Model):
                                                                                                                                                                         "- Required: The employee's manager must approve the request.\n"
                                                                                                                                                                         "- Optional: The employee's manager will be added as an approver but can be removed.\n"
                                                                                                                                                                         "- None: The employee's manager will not be added automatically.")
-    approval_minimum = fields.Integer(string='Minimum Approval', default=1, help="Minimum number of approvals required to confirm a request.")
+    approval_minimum = fields.Integer(string='Minimum Approval', compute='_compute_approval_minimum', store=True, readonly=False, help="Minimum number of approvals required to confirm a request.")
     invalid_minimum = fields.Boolean(string='Invalid Minimum', compute='_compute_invalid_minimum')
     invalid_minimum_warning = fields.Char(string='Invalid Minimum Warning', compute='_compute_invalid_minimum')
     
@@ -54,6 +54,11 @@ class ApprovalCategory(models.Model):
     def _compute_user_ids(self):
         for category in self:
             category.user_ids = category.approver_ids.mapped('user_id')
+
+    @api.depends('approver_ids')
+    def _compute_approval_minimum(self):
+        for category in self:
+            category.approval_minimum = len(category.approver_ids)
 
     @api.depends('approval_minimum', 'approver_ids') 
     def _compute_invalid_minimum(self):
@@ -130,4 +135,4 @@ class ApprovalCategoryApprover(models.Model):
     user_id = fields.Many2one('res.users', string='User', required=True)
     company_id = fields.Many2one(related='category_id.company_id', store=True)
     sequence = fields.Integer(string='Sequence', default=10)
-    required = fields.Boolean(string='Is Required', default=False)
+    required = fields.Boolean(string='Is Required', default=True)

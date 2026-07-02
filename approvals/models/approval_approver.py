@@ -15,7 +15,7 @@ class ApprovalApprover(models.Model):
         ('cancel', 'Cancel'),
     ], string='Status', default='new', required=True, copy=False)
     
-    required = fields.Boolean(string='Is Required', default=False)
+    required = fields.Boolean(string='Is Required', default=True)
     sequence = fields.Integer(string='Sequence', default=10)
     company_id = fields.Many2one(related='request_id.company_id', store=True)
     
