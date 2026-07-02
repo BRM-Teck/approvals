@@ -124,7 +124,7 @@
                             <field name="approver_ids" mode="list,kanban" readonly="request_status != 'new' or change_request_owner == False">
                                 <list editable="bottom" decoration-success="status=='approved'" decoration-warning="status in ['pending', 'waiting']" decoration-danger="status=='refused'" no_open="1">
                                     <field name="existing_request_user_ids" column_invisible="True"/>
-                                    <field name="sequence" column_invisible="True"/>
+                                    <field name="sequence" widget="handle"/>
                                     <field name="can_edit" column_invisible="True"/>
                                     <field name="can_edit_user_id" column_invisible="True"/>
                                     <field name="user_id" string="Approver" widget="many2one_avatar_user" readonly="not can_edit_user_id or status != 'new'" force_save="1"/>
