@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 19.0-20260528\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-30 12:22+0000\n"
-"PO-Revision-Date: 2026-06-30 12:22+0000\n"
+"POT-Creation-Date: 2026-07-02 15:17+0000\n"
+"PO-Revision-Date: 2026-07-02 15:17+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -21,9 +21,19 @@ msgid "Approval Category"
 msgstr "Catégorie d'approbation"
 
 #. module: approvals_purchase
+#: model_terms:ir.ui.view,arch_db:approvals_purchase.purchase_order_view_form_inherit_approvals
+msgid "Approval Pending"
+msgstr "Approbation en attente"
+
+#. module: approvals_purchase
 #: model:ir.model,name:approvals_purchase.model_approval_product_line
 msgid "Approval Product Line"
 msgstr "Ligne de produit d'approbation"
+
+#. module: approvals_purchase
+#: model_terms:ir.ui.view,arch_db:approvals_purchase.purchase_order_view_form_inherit_approvals
+msgid "Approval Refused"
+msgstr "Approbation refusée"
 
 #. module: approvals_purchase
 #: model:ir.model,name:approvals_purchase.model_approval_request
@@ -32,9 +42,19 @@ msgid "Approval Request"
 msgstr "Demande d'approbation"
 
 #. module: approvals_purchase
+#: model:ir.model.fields,field_description:approvals_purchase.field_purchase_order__approval_request_status
+msgid "Approval Status"
+msgstr "Statut d'approbation"
+
+#. module: approvals_purchase
 #: model:ir.model.fields,field_description:approvals_purchase.field_approval_category__approval_type
 msgid "Approval Type"
 msgstr "Type d'approbation"
+
+#. module: approvals_purchase
+#: model_terms:ir.ui.view,arch_db:approvals_purchase.purchase_order_view_form_inherit_approvals
+msgid "Approvals"
+msgstr "Approbations"
 
 #. module: approvals_purchase
 #: model:ir.model.fields.selection,name:approvals_purchase.selection__approval_category__approval_type__purchase
@@ -46,6 +66,11 @@ msgstr "Créer une demande de prix"
 #: model:approval.category,name:approvals_purchase.approval_category_data_rfq
 msgid "Créer des demandes de prix"
 msgstr "Créer des demandes de prix"
+
+#. module: approvals_purchase
+#: model_terms:ir.ui.view,arch_db:approvals_purchase.purchase_order_view_form_inherit_approvals
+msgid "Demander Approbation"
+msgstr "Demander Approbation"
 
 #. module: approvals_purchase
 #: model:ir.model.fields,field_description:approvals_purchase.field_approval_category__display_name
@@ -87,3 +112,13 @@ msgstr "Nombre de bons de commande"
 #: model_terms:ir.ui.view,arch_db:approvals_purchase.approval_request_view_form
 msgid "Purchase Orders"
 msgstr "Bons de commande"
+
+#. module: approvals_purchase
+#: model:ir.model.fields,help:approvals_purchase.field_purchase_order__approval_request_status
+msgid "The associated approval request <b>%s</b> has been approved. The order can now be confirmed."
+msgstr "La demande d'approbation associée <b>%s</b> a été approuvée. La commande peut maintenant être confirmée."
+
+#. module: approvals_purchase
+#: model:ir.model.fields,help:approvals_purchase.field_purchase_order__approval_request_status
+msgid "The associated approval request <b>%s</b> has been refused."
+msgstr "La demande d'approbation associée <b>%s</b> a été refusée."
