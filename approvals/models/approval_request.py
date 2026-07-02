@@ -116,6 +116,18 @@ class ApprovalRequest(models.Model):
                         })
                         category.sequence_id = sequence.id
                     vals['name'] = category.sequence_id.next_by_id()
+                
+                # Auto-populate approvers if created programmatically
+                if not vals.get('approver_ids'):
+                    temp_request = self.new(vals)
+                    temp_request._onchange_category_id()
+                    if temp_request.approver_ids:
+                        vals['approver_ids'] = [(0, 0, {
+                            'user_id': a.user_id.id,
+                            'required': a.required,
+                            'sequence': a.sequence
+                        }) for a in temp_request.approver_ids]
+
         return super().create(vals_list)
 
     def _compute_attachment_number(self):
