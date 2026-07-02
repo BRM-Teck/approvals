@@ -114,10 +114,23 @@ class ApprovalRequest(models.Model):
     def action_confirm(self):
         self.ensure_one()
         self.request_status = 'pending'
-        self.approver_ids.write({'status': 'pending'})
         
+        if self.approver_sequence:
+            sorted_approvers = self.approver_ids.sorted(key=lambda a: a.sequence)
+            if sorted_approvers:
+                first_sequence = sorted_approvers[0].sequence
+                active_approvers = sorted_approvers.filtered(lambda a: a.sequence == first_sequence)
+                waiting_approvers = sorted_approvers - active_approvers
+                active_approvers.write({'status': 'pending'})
+                waiting_approvers.write({'status': 'new'})
+            else:
+                active_approvers = self.approver_ids
+        else:
+            active_approvers = self.approver_ids
+            self.approver_ids.write({'status': 'pending'})
+            
         # Notification and activities for approvers
-        approver_users = self.approver_ids.mapped('user_id')
+        approver_users = active_approvers.mapped('user_id')
         approver_partners = approver_users.mapped('partner_id')
         if approver_partners:
             self.message_subscribe(partner_ids=approver_partners.ids)
@@ -139,6 +152,37 @@ class ApprovalRequest(models.Model):
         approver = self.approver_ids.filtered(lambda a: a.user_id == self.env.user)
         if approver:
             approver.status = 'approved'
+            
+        if self.approver_sequence:
+            sorted_approvers = self.approver_ids.sorted(key=lambda a: a.sequence)
+            pending_approvers = sorted_approvers.filtered(lambda a: a.status == 'pending')
+            if not pending_approvers:
+                waiting_approvers = sorted_approvers.filtered(lambda a: a.status == 'new')
+                if waiting_approvers:
+                    next_sequence = waiting_approvers[0].sequence
+                    next_active = waiting_approvers.filtered(lambda a: a.sequence == next_sequence)
+                    next_active.sudo().write({'status': 'pending'})
+                    
+                    next_users = next_active.mapped('user_id')
+                    next_partners = next_users.mapped('partner_id')
+                    if next_partners:
+                        self.message_subscribe(partner_ids=next_partners.ids)
+                        
+                    self.message_post(
+                        body=_("The request has been submitted and is pending for your approval."),
+                        partner_ids=next_partners.ids,
+                    )
+                    
+                    for user in next_users:
+                        self.activity_schedule(
+                            'mail.mail_activity_data_todo',
+                            user_id=user.id,
+                            note=_("Please review this approval request.")
+                        )
+                    
+                    # Clear activities for the current user who just approved
+                    self.activity_search(['mail.mail_activity_data_todo'], user_id=self.env.user.id).unlink()
+                    return
             
         # Check if all required approvers have approved
         required_approvers = self.approver_ids.filtered(lambda a: a.required)
