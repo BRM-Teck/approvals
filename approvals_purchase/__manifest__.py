@@ -1,6 +1,6 @@
 {
     'name': 'Validations - Achats',
-    'version': '19.0.1.0.1',
+    'version': '19.0.1.0.2',
     'category': 'Validations',
     'summary': "Ce module ajoute au flux de validation la possibilité de générer une demande de prix à partir d'une demande de validation d'achat.",
     'description': """
@@ -11,6 +11,7 @@
     'depends': ['approvals', 'purchase'],
     'data': [
         'data/approval_category_data.xml',
+        'data/res_groups_data.xml',
         'views/approval_category_views.xml',
         'views/approval_request_views.xml',
         'views/purchase_order_views.xml',

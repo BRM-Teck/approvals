@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="approvals.group_approval_user" model="res.groups">
+            <field name="name">Approbateur (Désigné)</field>
+            <field name="comment">Permet à l'utilisateur de créer des demandes et d'approuver uniquement celles où il est explicitement désigné dans le circuit de validation.</field>
+        </record>
+        
+        <record id="approvals.group_approval_manager" model="res.groups">
+            <field name="name">Super-Approbateur (Toutes les demandes)</field>
+            <field name="comment">Permet d'approuver, refuser ou annuler N'IMPORTE QUELLE demande d'approbation dans le système, même sans être dans le circuit.</field>
+        </record>
+    </data>
+</odoo>
