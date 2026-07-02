@@ -230,6 +230,10 @@
                     <filter string="Category" name="groupby_category_id" context="{'group_by': 'category_id'}"/>
                     <filter string="Request Status" name="groupby_request_status" context="{'group_by': 'request_status'}"/>
                 </group>
+                <searchpanel>
+                    <field name="category_id" icon="fa-th-list" enable_counters="1"/>
+                    <field name="request_status" select="multi" icon="fa-tasks" enable_counters="1"/>
+                </searchpanel>
             </search>
         </field>
     </record>
