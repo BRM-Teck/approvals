@@ -11,6 +11,7 @@
     'data': [
         'security/approval_security.xml',
         'security/ir.model.access.csv',
+        'data/res_groups_data.xml',
         'views/approval_category_views.xml',
         'views/approval_request_views.xml',
         'views/approval_menus.xml',

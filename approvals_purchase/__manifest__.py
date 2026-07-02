@@ -11,7 +11,6 @@
     'depends': ['approvals', 'purchase'],
     'data': [
         'data/approval_category_data.xml',
-        'data/res_groups_data.xml',
         'views/approval_category_views.xml',
         'views/approval_request_views.xml',
         'views/purchase_order_views.xml',
