@@ -24,6 +24,17 @@
                 <attribute name="invisible">state != 'sent' or approval_request_status != 'approved'</attribute>
             </xpath>
 
+            <!-- Hide native Send RFQ buttons if not approved -->
+            <xpath expr="//button[@name='action_rfq_send'][1]" position="attributes">
+                <!-- Draft state Send by Email button -->
+                <attribute name="invisible">state != 'draft' or approval_request_status != 'approved'</attribute>
+            </xpath>
+            
+            <xpath expr="//button[@name='action_rfq_send'][2]" position="attributes">
+                <!-- Sent state Re-Send by Email button -->
+                <attribute name="invisible">state != 'sent' or approval_request_status != 'approved'</attribute>
+            </xpath>
+
             <!-- Add Request Approval button -->
             <xpath expr="//button[@name='button_confirm'][1]" position="before">
                 <button name="action_request_approval" type="object" string="Demander Approbation" class="oe_highlight"

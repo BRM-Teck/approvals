@@ -1,5 +1,6 @@
 from odoo import models, fields, _, api
 from odoo.exceptions import UserError
+from markupsafe import Markup
 
 class PurchaseOrder(models.Model):
     _inherit = 'purchase.order'
@@ -35,8 +36,8 @@ class PurchaseOrder(models.Model):
             approval_request.action_confirm() # Automatically submit it
             
             # Traceability: post messages
-            order.message_post(body=_("Approval request submitted: <a href='#' data-oe-model='approval.request' data-oe-id='%s'>%s</a>") % (approval_request.id, approval_request.name))
-            approval_request.message_post(body=_("Created from Purchase Order: <a href='#' data-oe-model='purchase.order' data-oe-id='%s'>%s</a>") % (order.id, order.name))
+            order.message_post(body=Markup(_("Approval request submitted: <a href='#' data-oe-model='approval.request' data-oe-id='%s'>%s</a>")) % (approval_request.id, approval_request.name))
+            approval_request.message_post(body=Markup(_("Created from Purchase Order: <a href='#' data-oe-model='purchase.order' data-oe-id='%s'>%s</a>")) % (order.id, order.name))
 
     def button_confirm(self):
         for order in self:
