@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="purchase_order_view_form_inherit_approvals" model="ir.ui.view">
+        <field name="name">purchase.order.view.form.inherit.approvals</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <!-- Add field invisible status -->
+            <xpath expr="//field[@name='state']" position="before">
+                <field name="approval_request_id" invisible="1"/>
+                <field name="approval_request_status" invisible="1"/>
+            </xpath>
+            
+            <!-- Hide native confirm buttons if approval is needed but not approved -->
+            <!-- Actually, better to modify their invisible condition or just let python error handle it, 
+                 but adding a new button is cleaner. -->
+            <xpath expr="//button[@name='button_confirm'][1]" position="attributes">
+                <!-- Draft state confirm button -->
+                <attribute name="invisible">state != 'draft' or (approval_request_id != False and approval_request_status != 'approved')</attribute>
+            </xpath>
+            
+            <xpath expr="//button[@name='button_confirm'][2]" position="attributes">
+                <!-- Sent state confirm button -->
+                <attribute name="invisible">state != 'sent' or (approval_request_id != False and approval_request_status != 'approved')</attribute>
+            </xpath>
+
+            <!-- Add Request Approval button -->
+            <xpath expr="//button[@name='button_confirm'][1]" position="before">
+                <button name="action_request_approval" type="object" string="Demander Approbation" class="oe_highlight"
+                        invisible="state not in ('draft', 'sent') or approval_request_id != False"
+                        groups="purchase.group_purchase_user"/>
+            </xpath>
+
+            <!-- Add Approval Status widget/badge -->
+            <xpath expr="//div[hasclass('oe_title')]" position="before">
+                <widget name="web_ribbon" title="Approval Pending" bg_color="bg-warning" invisible="approval_request_status != 'pending'"/>
+                <widget name="web_ribbon" title="Approval Refused" bg_color="bg-danger" invisible="approval_request_status != 'refused'"/>
+            </xpath>
+
+            <!-- Display the linked Approval Request in the other information page -->
+            <xpath expr="//page[@name='purchase_delivery_invoice']//group" position="inside">
+                <group string="Approvals">
+                    <field name="approval_request_id" readonly="1" invisible="approval_request_id == False"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

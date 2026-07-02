@@ -7,7 +7,7 @@ class ApprovalRequest(models.Model):
 
     def _compute_purchase_order_count(self):
         for request in self:
-            request.purchase_order_count = self.env['purchase.order'].search_count([('approval_request_id', '=', request.id)])
+            request.purchase_order_count = self.env['purchase.order'].sudo().search_count([('approval_request_id', '=', request.id)])
 
     def action_approve(self):
         super().action_approve()
@@ -15,6 +15,21 @@ class ApprovalRequest(models.Model):
             if request.request_status == 'approved' and request.category_id.approval_type == 'purchase':
                 if not request.purchase_order_count:
                     request.action_create_purchase_orders()
+                else:
+                    # Traçabilité: Post message to linked POs
+                    linked_pos = self.env['purchase.order'].sudo().search([('approval_request_id', '=', request.id)])
+                    for po in linked_pos:
+                        po.message_post(body=_("The associated approval request <b>%s</b> has been approved. The order can now be confirmed.") % request.name)
+
+    def action_refuse(self):
+        super().action_refuse()
+        for request in self:
+            if request.request_status == 'refused' and request.category_id.approval_type == 'purchase':
+                linked_pos = self.env['purchase.order'].sudo().search([('approval_request_id', '=', request.id)])
+                for po in linked_pos:
+                    po.message_post(body=_("The associated approval request <b>%s</b> has been refused.") % request.name)
+
+
 
     def action_create_purchase_orders(self):
         self.ensure_one()
