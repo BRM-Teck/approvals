@@ -1,4 +1,5 @@
 from odoo import models, fields, api, _
+from markupsafe import Markup
 
 class ApprovalRequest(models.Model):
     _inherit = 'approval.request'
@@ -19,7 +20,7 @@ class ApprovalRequest(models.Model):
                     # Traçabilité: Post message to linked POs
                     linked_pos = self.env['purchase.order'].sudo().search([('approval_request_id', '=', request.id)])
                     for po in linked_pos:
-                        po.message_post(body=_("The associated approval request <b>%s</b> has been approved. The order can now be confirmed.") % request.name)
+                        po.message_post(body=Markup(_("The associated approval request <b>%s</b> has been approved. The order can now be confirmed.")) % request.name)
 
     def action_refuse(self):
         super().action_refuse()
@@ -27,8 +28,7 @@ class ApprovalRequest(models.Model):
             if request.request_status == 'refused' and request.category_id.approval_type == 'purchase':
                 linked_pos = self.env['purchase.order'].sudo().search([('approval_request_id', '=', request.id)])
                 for po in linked_pos:
-                    po.message_post(body=_("The associated approval request <b>%s</b> has been refused.") % request.name)
-
+                    po.message_post(body=Markup(_("The associated approval request <b>%s</b> has been refused.")) % request.name)
 
 
     def action_create_purchase_orders(self):
