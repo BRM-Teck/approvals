@@ -56,3 +56,26 @@ class TestApprovalRequestAccount(TransactionCase):
         # Now we can post it
         invoice.action_post()
         self.assertEqual(invoice.state, 'posted')
+        
+    def test_02_approval_request_chatter(self):
+        invoice = self.env['account.move'].create({
+            'move_type': 'out_invoice',
+            'partner_id': self.env.user.partner_id.id,
+        })
+        invoice.action_request_approval()
+        
+        request = self.env['approval.request'].search([('account_move_id', '=', invoice.id)])
+        
+        # Messages count before approval
+        msg_count_before = len(invoice.message_ids)
+        
+        request.with_user(self.approver).action_approve()
+        
+        # Messages count should increase
+        msg_count_after = len(invoice.message_ids)
+        self.assertTrue(msg_count_after > msg_count_before)
+        
+        # Ensure the last message contains approval info
+        last_message = invoice.message_ids[0]
+        self.assertIn("Approval Request", last_message.body)
+        self.assertIn("Approved", last_message.body)
