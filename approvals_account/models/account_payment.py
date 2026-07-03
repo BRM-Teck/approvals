@@ -23,7 +23,7 @@ class AccountPayment(models.Model):
                 'request_owner_id': self.env.user.id,
                 'partner_id': payment.partner_id.id,
                 'amount': payment.amount,
-                'reason': payment.ref,
+                'reason': getattr(payment, 'ref', getattr(payment, 'memo', '')),
             }
             approval_request = self.env['approval.request'].create(request_vals)
             payment.approval_request_id = approval_request.id
