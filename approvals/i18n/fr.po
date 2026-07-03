@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 19.0-20260528\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-30 12:29+0000\n"
-"PO-Revision-Date: 2026-06-30 12:29+0000\n"
+"POT-Creation-Date: 2026-07-02 15:15+0000\n"
+"PO-Revision-Date: 2026-07-02 15:15+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -85,6 +85,11 @@ msgstr "Toutes les validations"
 #: model_terms:ir.ui.view,arch_db:approvals.approval_category_view_form
 msgid "Amount"
 msgstr "Montant"
+
+#. module: approvals
+#: model:res.groups,name:approvals.group_approval_user
+msgid "Approbateur (Désigné)"
+msgstr "Utilisateur"
 
 #. module: approvals
 #: model:ir.model.fields.selection,name:approvals.selection__approval_category__approval_type__approval
@@ -284,7 +289,7 @@ msgstr "Date de confirmation"
 #: model:ir.model.fields,field_description:approvals.field_approval_request__partner_id
 #: model_terms:ir.ui.view,arch_db:approvals.approval_category_view_form
 msgid "Contact"
-msgstr "Contact"
+msgstr ""
 
 #. module: approvals
 #: model_terms:ir.actions.act_window,help:approvals.approval_category_action
@@ -351,7 +356,7 @@ msgstr "Date de début"
 #: model:ir.model.fields,field_description:approvals.field_approval_request__reason
 #: model_terms:ir.ui.view,arch_db:approvals.approval_request_view_form
 msgid "Description"
-msgstr "Description"
+msgstr ""
 
 #. module: approvals
 #: model:ir.model.fields,help:approvals.field_approval_category__sequence
@@ -536,6 +541,7 @@ msgstr "Est un abonné"
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_approver__required
+#: model:ir.model.fields,field_description:approvals.field_approval_category_approver__required
 msgid "Is Required"
 msgstr "Est requis"
 
@@ -577,7 +583,6 @@ msgid "Manager Approval"
 msgstr "Approbation du responsable"
 
 #. module: approvals
-#: model:res.groups,name:approvals.group_approval_manager_all
 #: model:res.groups.privilege,name:approvals.privilege_approval_manager_all
 msgid "Manager: Approve all requests"
 msgstr "Responsable : Approuver toutes les demandes"
@@ -663,6 +668,11 @@ msgid "Next Activity Type"
 msgstr "Type d'activité suivante"
 
 #. module: approvals
+#: model:res.groups.privilege,name:approvals.privilege_approval_user
+msgid "Niveau d'accès"
+msgstr "Utilisateur"
+
+#. module: approvals
 #: model:ir.model.fields.selection,name:approvals.selection__approval_category__has_amount__no
 #: model:ir.model.fields.selection,name:approvals.selection__approval_category__has_date__no
 #: model:ir.model.fields.selection,name:approvals.selection__approval_category__has_location__no
@@ -740,6 +750,20 @@ msgstr "Mode de paiement"
 #: model_terms:ir.ui.view,arch_db:approvals.approval_request_view_form
 msgid "Period"
 msgstr "Période"
+
+#. module: approvals
+#: model:res.groups,comment:approvals.group_approval_manager_all
+msgid ""
+"Permet d'approuver, refuser ou annuler N'IMPORTE QUELLE demande "
+"d'approbation dans le système, même sans être dans le circuit."
+msgstr ""
+
+#. module: approvals
+#: model:res.groups,comment:approvals.group_approval_user
+msgid ""
+"Permet à l'utilisateur de créer des demandes et d'approuver uniquement "
+"celles où il est explicitement désigné dans le circuit de validation."
+msgstr ""
 
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_category__has_product
@@ -933,6 +957,7 @@ msgstr "Erreur de distribution SMS"
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_approver__sequence
 #: model:ir.model.fields,field_description:approvals.field_approval_category__sequence
+#: model:ir.model.fields,field_description:approvals.field_approval_category_approver__sequence
 msgid "Sequence"
 msgstr "Séquence"
 
@@ -981,6 +1006,11 @@ msgid "Submitted"
 msgstr "Soumis"
 
 #. module: approvals
+#: model:res.groups,name:approvals.group_approval_manager_all
+msgid "Super-Approbateur (Toutes les demandes)"
+msgstr "Responsable : Approuver toutes les demandes"
+
+#. module: approvals
 #: model:ir.model.fields,help:approvals.field_approval_category__sequence_id
 msgid "The ir.sequence used to generate request names."
 msgstr "La séquence ir.sequence utilisée pour générer les noms des demandes."
@@ -1019,8 +1049,6 @@ msgstr "Unité de mesure"
 #. module: approvals
 #: model:ir.model.fields,field_description:approvals.field_approval_approver__user_id
 #: model:ir.model.fields,field_description:approvals.field_approval_category_approver__user_id
-#: model:res.groups,name:approvals.group_approval_user
-#: model:res.groups.privilege,name:approvals.privilege_approval_user
 msgid "User"
 msgstr "Utilisateur"
 

@@ -1,0 +1,209 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* approvals_account
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0-20260513\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-03 11:41+0000\n"
+"PO-Revision-Date: 2026-07-03 11:41+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: approvals_account
+#: model_terms:ir.ui.view,arch_db:approvals_account.view_account_payment_form_inherit_approval
+#: model_terms:ir.ui.view,arch_db:approvals_account.view_move_form_inherit_approval
+msgid "<span class=\"o_stat_text\">Approval</span>"
+msgstr "<span class=\"o_stat_text\">Approbation</span>"
+
+#. module: approvals_account
+#: model_terms:ir.ui.view,arch_db:approvals_account.approval_request_view_form_inherit_account
+msgid "<span class=\"o_stat_text\">Invoice</span>"
+msgstr "<span class=\"o_stat_text\">Facture</span>"
+
+#. module: approvals_account
+#: model_terms:ir.ui.view,arch_db:approvals_account.approval_request_view_form_inherit_account
+msgid "<span class=\"o_stat_text\">Payment</span>"
+msgstr "<span class=\"o_stat_text\">Paiement</span>"
+
+#. module: approvals_account
+#. odoo-python
+#: code:addons/approvals_account/models/account_move.py:0
+msgid "An approval request is already linked to this invoice."
+msgstr "Une demande d'approbation est déjà liée à cette facture."
+
+#. module: approvals_account
+#. odoo-python
+#: code:addons/approvals_account/models/account_payment.py:0
+msgid "An approval request is already linked to this payment."
+msgstr "Une demande d'approbation est déjà liée à ce paiement."
+
+#. module: approvals_account
+#: model:approval.category,name:approvals_account.approval_category_data_invoice
+msgid "Approbation de Facture"
+msgstr "Approbation de Facture"
+
+#. module: approvals_account
+#: model:approval.category,name:approvals_account.approval_category_data_payment
+msgid "Approbation de Paiement"
+msgstr "Approbation de Paiement"
+
+#. module: approvals_account
+#: model:ir.model,name:approvals_account.model_approval_category
+msgid "Approval Category"
+msgstr "Catégorie d'approbation"
+
+#. module: approvals_account
+#: model:ir.model,name:approvals_account.model_approval_request
+#: model:ir.model.fields,field_description:approvals_account.field_account_bank_statement_line__approval_request_id
+#: model:ir.model.fields,field_description:approvals_account.field_account_move__approval_request_id
+#: model:ir.model.fields,field_description:approvals_account.field_account_payment__approval_request_id
+msgid "Approval Request"
+msgstr "Demande d'approbation"
+
+#. module: approvals_account
+#: model:ir.model.fields,field_description:approvals_account.field_account_bank_statement_line__approval_request_status
+#: model:ir.model.fields,field_description:approvals_account.field_account_move__approval_request_status
+#: model:ir.model.fields,field_description:approvals_account.field_account_payment__approval_request_status
+msgid "Approval Status"
+msgstr "Statut d'approbation"
+
+#. module: approvals_account
+#: model:ir.model.fields,field_description:approvals_account.field_approval_category__approval_type
+msgid "Approval Type"
+msgstr "Type d'approbation"
+
+#. module: approvals_account
+#. odoo-python
+#: code:addons/approvals_account/models/account_move.py:0
+msgid "Approval for Invoice: %s"
+msgstr "Approbation pour la facture : %s"
+
+#. module: approvals_account
+#. odoo-python
+#: code:addons/approvals_account/models/account_payment.py:0
+msgid "Approval for Payment: %s"
+msgstr "Approbation pour le paiement : %s"
+
+#. module: approvals_account
+#. odoo-python
+#: code:addons/approvals_account/models/account_move.py:0
+#: code:addons/approvals_account/models/account_payment.py:0
+msgid ""
+"Approval request submitted: <a href='#' data-oe-model='approval.request' "
+"data-oe-id='%s'>%s</a>"
+msgstr "Demande d'approbation soumise : <a href='#' data-oe-model='approval.request' data-oe-id='%s'>%s</a>"
+
+#. module: approvals_account
+#. odoo-python
+#: code:addons/approvals_account/models/account_move.py:0
+msgid ""
+"Created from Invoice: <a href='#' data-oe-model='account.move' data-oe-"
+"id='%s'>%s</a>"
+msgstr "Créé à partir de la facture : <a href='#' data-oe-model='account.move' data-oe-id='%s'>%s</a>"
+
+#. module: approvals_account
+#. odoo-python
+#: code:addons/approvals_account/models/account_payment.py:0
+msgid ""
+"Created from Payment: <a href='#' data-oe-model='account.payment' data-oe-"
+"id='%s'>%s</a>"
+msgstr "Créé à partir du paiement : <a href='#' data-oe-model='account.payment' data-oe-id='%s'>%s</a>"
+
+#. module: approvals_account
+#: model:ir.model.fields,field_description:approvals_account.field_account_move__display_name
+#: model:ir.model.fields,field_description:approvals_account.field_account_payment__display_name
+#: model:ir.model.fields,field_description:approvals_account.field_approval_category__display_name
+#: model:ir.model.fields,field_description:approvals_account.field_approval_request__display_name
+msgid "Display Name"
+msgstr "Nom d'affichage"
+
+#. module: approvals_account
+#: model:ir.model.fields,field_description:approvals_account.field_account_move__id
+#: model:ir.model.fields,field_description:approvals_account.field_account_payment__id
+#: model:ir.model.fields,field_description:approvals_account.field_approval_category__id
+#: model:ir.model.fields,field_description:approvals_account.field_approval_request__id
+msgid "ID"
+msgstr "ID"
+
+#. module: approvals_account
+#: model:ir.model.fields,help:approvals_account.field_approval_category__approval_type
+msgid "Internal approval type."
+msgstr "Type d'approbation interne."
+
+#. module: approvals_account
+#: model:ir.model.fields,field_description:approvals_account.field_approval_request__account_move_id
+msgid "Invoice"
+msgstr "Facture"
+
+#. module: approvals_account
+#: model:ir.model.fields.selection,name:approvals_account.selection__approval_category__approval_type__invoice
+msgid "Invoices"
+msgstr "Factures"
+
+#. module: approvals_account
+#: model:ir.model,name:approvals_account.model_account_move
+msgid "Journal Entry"
+msgstr "Pièce comptable"
+
+#. module: approvals_account
+#: model:ir.model.fields,field_description:approvals_account.field_approval_request__account_payment_id
+msgid "Payment"
+msgstr "Paiement"
+
+#. module: approvals_account
+#: model:ir.model,name:approvals_account.model_account_payment
+#: model:ir.model.fields.selection,name:approvals_account.selection__approval_category__approval_type__payment
+msgid "Payments"
+msgstr "Paiements"
+
+#. module: approvals_account
+#. odoo-python
+#: code:addons/approvals_account/models/account_move.py:0
+msgid "Please define an Approval Category with type 'Invoice' first."
+msgstr "Veuillez d'abord définir une catégorie d'approbation de type 'Facture'."
+
+#. module: approvals_account
+#. odoo-python
+#: code:addons/approvals_account/models/account_payment.py:0
+msgid "Please define an Approval Category with type 'Payment' first."
+msgstr "Veuillez d'abord définir une catégorie d'approbation de type 'Paiement'."
+
+#. module: approvals_account
+#: model_terms:ir.ui.view,arch_db:approvals_account.view_account_payment_form_inherit_approval
+#: model_terms:ir.ui.view,arch_db:approvals_account.view_move_form_inherit_approval
+msgid "Request Approval"
+msgstr "Demander Approbation"
+
+#. module: approvals_account
+#. odoo-python
+#: code:addons/approvals_account/models/account_move.py:0
+msgid ""
+"You cannot confirm this invoice because the associated approval request is "
+"not yet approved."
+msgstr "Vous ne pouvez pas confirmer cette facture car la demande d'approbation associée n'est pas encore approuvée."
+
+#. module: approvals_account
+#. odoo-python
+#: code:addons/approvals_account/models/account_payment.py:0
+msgid ""
+"You cannot confirm this payment because the associated approval request is "
+"not yet approved."
+msgstr "Vous ne pouvez pas confirmer ce paiement car la demande d'approbation associée n'est pas encore approuvée."
+
+#. module: approvals_account
+#. odoo-python
+#: code:addons/approvals_account/models/account_move.py:0
+msgid "You must request approval before confirming this invoice."
+msgstr "Vous devez demander l'approbation avant de confirmer cette facture."
+
+#. module: approvals_account
+#. odoo-python
+#: code:addons/approvals_account/models/account_payment.py:0
+msgid "You must request approval before confirming this payment."
+msgstr "Vous devez demander l'approbation avant de confirmer ce paiement."
