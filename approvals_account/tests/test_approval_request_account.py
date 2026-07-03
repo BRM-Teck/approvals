@@ -18,6 +18,7 @@ class TestApprovalRequestAccount(TransactionCase):
         cls.approver = cls.env['res.users'].create({
             'name': 'Approver',
             'login': 'approver',
+            'groups_id': [(4, cls.env.ref('approvals.group_approval_user').id)],
         })
         
         cls.env['approval.category.approver'].create({
