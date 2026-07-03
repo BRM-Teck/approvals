@@ -9,6 +9,7 @@
     'author': 'BRM',
     'depends': ['approvals', 'account'],
     'data': [
+        'data/approval_category_data.xml',
         'views/approval_request_views.xml',
         'views/account_move_views.xml',
         'views/account_payment_views.xml',
