@@ -24,6 +24,7 @@ class AccountMove(models.Model):
                 'partner_id': move.partner_id.id,
                 'amount': move.amount_total,
                 'reason': move.narration,
+                'account_move_id': move.id,
             }
             approval_request = self.env['approval.request'].create(request_vals)
             move.approval_request_id = approval_request.id
