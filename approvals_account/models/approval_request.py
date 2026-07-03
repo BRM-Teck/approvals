@@ -31,3 +31,23 @@ class ApprovalRequest(models.Model):
                     request.account_payment_id.sudo().message_post(body="Approval Request %s has been Refused." % request.name)
                     
         return res
+
+    def action_open_invoice(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Invoice',
+            'view_mode': 'form',
+            'res_model': 'account.move',
+            'res_id': self.account_move_id.id,
+        }
+
+    def action_open_payment(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Payment',
+            'view_mode': 'form',
+            'res_model': 'account.payment',
+            'res_id': self.account_payment_id.id,
+        }

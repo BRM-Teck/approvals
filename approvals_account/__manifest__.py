@@ -9,6 +9,9 @@
     'author': 'BRM',
     'depends': ['approvals', 'account'],
     'data': [
+        'views/approval_request_views.xml',
+        'views/account_move_views.xml',
+        'views/account_payment_views.xml',
     ],
     'installable': True,
     'application': False,
