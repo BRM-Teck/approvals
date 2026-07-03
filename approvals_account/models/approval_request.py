@@ -13,9 +13,9 @@ class ApprovalRequest(models.Model):
         for request in self:
             if request.request_status == 'approved':
                 if request.account_move_id:
-                    request.account_move_id.message_post(body="Approval Request %s has been Approved." % request.name)
+                    request.account_move_id.sudo().message_post(body="Approval Request %s has been Approved." % request.name)
                 elif request.account_payment_id:
-                    request.account_payment_id.message_post(body="Approval Request %s has been Approved." % request.name)
+                    request.account_payment_id.sudo().message_post(body="Approval Request %s has been Approved." % request.name)
                     
         return res
 
@@ -26,8 +26,8 @@ class ApprovalRequest(models.Model):
         for request in self:
             if request.request_status == 'refused':
                 if request.account_move_id:
-                    request.account_move_id.message_post(body="Approval Request %s has been Refused." % request.name)
+                    request.account_move_id.sudo().message_post(body="Approval Request %s has been Refused." % request.name)
                 elif request.account_payment_id:
-                    request.account_payment_id.message_post(body="Approval Request %s has been Refused." % request.name)
+                    request.account_payment_id.sudo().message_post(body="Approval Request %s has been Refused." % request.name)
                     
         return res
