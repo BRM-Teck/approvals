@@ -7,6 +7,7 @@ class PurchaseOrder(models.Model):
 
     approval_request_id = fields.Many2one('approval.request', string='Approval Request', copy=False, tracking=True)
     approval_request_status = fields.Selection(related='approval_request_id.request_status', string="Approval Status")
+    user_status = fields.Selection(related='approval_request_id.user_status', string="User Status")
 
     def action_request_approval(self):
         for order in self:
@@ -38,6 +39,16 @@ class PurchaseOrder(models.Model):
             # Traceability: post messages
             order.message_post(body=Markup(_("Approval request submitted: <a href='#' data-oe-model='approval.request' data-oe-id='%s'>%s</a>")) % (approval_request.id, approval_request.name))
             approval_request.message_post(body=Markup(_("Created from Purchase Order: <a href='#' data-oe-model='purchase.order' data-oe-id='%s'>%s</a>")) % (order.id, order.name))
+
+    def action_approve(self):
+        for order in self:
+            if order.approval_request_id:
+                order.approval_request_id.action_approve()
+
+    def action_refuse(self):
+        for order in self:
+            if order.approval_request_id:
+                order.approval_request_id.action_refuse()
 
     def button_confirm(self):
         for order in self:
