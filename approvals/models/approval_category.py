@@ -46,7 +46,7 @@ class ApprovalCategory(models.Model):
     request_to_validate_count = fields.Integer(string='Requests to Validate', compute='_compute_request_to_validate_count')
 
     # Relational
-    user_ids = fields.Many2many('res.users', string='Approvers', compute='_compute_user_ids', help="Users who are configured to approve this category.")
+    user_ids = fields.Many2many('res.users', string='Approver Users', compute='_compute_user_ids', help="Users who are configured to approve this category.")
     approver_ids = fields.One2many('approval.category.approver', 'category_id', string='Approvers', help="Specific approvers for this category.")
     approval_properties_definition = fields.PropertiesDefinition('Approval Properties', help="Custom properties to add dynamic fields to requests.")
 
