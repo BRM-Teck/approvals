@@ -35,6 +35,9 @@ class AccountMove(models.Model):
 
     def action_post(self):
         for move in self:
+            if move.move_type == 'entry':
+                continue
+                
             if move.approval_request_id and move.approval_request_status != 'approved':
                 raise UserError(_("You cannot confirm this invoice because the associated approval request is not yet approved."))
             
