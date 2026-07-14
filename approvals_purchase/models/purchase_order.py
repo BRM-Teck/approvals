@@ -14,7 +14,8 @@ class PurchaseOrder(models.Model):
     def _compute_is_approval_user(self):
         category = self.env['approval.category'].search([('approval_type', '=', 'purchase')], limit=1)
         is_user = self.env.user.has_group('approvals.group_approval_user')
-        if category and self.env.user in category.excluded_user_ids:
+        is_manager = self.env.user.has_group('approvals.group_approval_manager')
+        if is_manager or (category and self.env.user in category.excluded_user_ids):
             is_user = False
         for order in self:
             order.is_approval_user = is_user
