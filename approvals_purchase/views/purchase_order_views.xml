@@ -40,6 +40,9 @@
                 <button name="action_request_approval" type="object" string="Demander Approbation" class="oe_highlight"
                         invisible="state not in ('draft', 'sent') or approval_request_id != False or not is_approval_user"
                         groups="purchase.group_purchase_user"/>
+                <button name="action_request_approval" type="object" string="Demander Approbation"
+                        invisible="state not in ('draft', 'sent') or approval_request_id != False or is_approval_user"
+                        groups="purchase.group_purchase_user"/>
                 <button name="action_approve" type="object" string="Approuver" class="btn-success"
                         invisible="approval_request_id == False or approval_request_status != 'pending' or user_status != 'pending'"/>
                 <button name="action_refuse" type="object" string="Refuser" class="btn-danger"
