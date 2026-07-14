@@ -137,9 +137,15 @@ class ApprovalRequest(models.Model):
             ])
 
     def _compute_user_status(self):
+        is_manager = self.env.user.has_group('approvals.group_approval_manager_all') or self.env.user.has_group('approvals.group_approval_manager')
         for request in self:
             approver = request.approver_ids.filtered(lambda a: a.user_id == self.env.user)
-            request.user_status = approver.status if approver else False
+            if is_manager and request.request_status == 'pending':
+                request.user_status = 'pending'
+            elif approver:
+                request.user_status = approver[0].status
+            else:
+                request.user_status = False
 
     def _compute_change_request_owner(self):
         for request in self:
@@ -187,11 +193,12 @@ class ApprovalRequest(models.Model):
 
     def action_approve(self):
         self.ensure_one()
+        is_manager = self.env.user.has_group('approvals.group_approval_manager_all') or self.env.user.has_group('approvals.group_approval_manager')
         approver = self.approver_ids.filtered(lambda a: a.user_id == self.env.user)
         if approver:
             approver.status = 'approved'
             
-        if self.approver_sequence:
+        if self.approver_sequence and not is_manager:
             sorted_approvers = self.approver_ids.sorted(key=lambda a: a.sequence)
             pending_approvers = sorted_approvers.filtered(lambda a: a.status == 'pending')
             if not pending_approvers:
@@ -226,10 +233,13 @@ class ApprovalRequest(models.Model):
         required_approvers = self.approver_ids.filtered(lambda a: a.required)
         all_approved = all(a.status == 'approved' for a in required_approvers)
         
-        if (not required_approvers and approver) or all_approved:
+        if is_manager or (not required_approvers and approver) or all_approved:
             self.request_status = 'approved'
+            msg = _("The request has been approved.")
+            if is_manager and not all_approved:
+                msg = _("The request has been force approved by an administrator.")
             self.message_post(
-                body=_("The request has been approved."),
+                body=msg,
                 partner_ids=self.request_owner_id.partner_id.ids,
             )
             
@@ -243,8 +253,13 @@ class ApprovalRequest(models.Model):
             approver.status = 'refused'
             
         self.request_status = 'refused'
+        msg = _("The request has been refused.")
+        is_manager = self.env.user.has_group('approvals.group_approval_manager_all') or self.env.user.has_group('approvals.group_approval_manager')
+        if is_manager and not approver:
+            msg = _("The request has been force refused by an administrator.")
+            
         self.message_post(
-            body=_("The request has been refused."),
+            body=msg,
             partner_ids=self.request_owner_id.partner_id.ids,
         )
         # Clear activities
