@@ -8,6 +8,13 @@ class PurchaseOrder(models.Model):
     approval_request_id = fields.Many2one('approval.request', string='Approval Request', copy=False, tracking=True)
     approval_request_status = fields.Selection(related='approval_request_id.request_status', string="Approval Status")
     user_status = fields.Selection(related='approval_request_id.user_status', string="User Status")
+    is_approval_user = fields.Boolean(compute='_compute_is_approval_user')
+
+    @api.depends_context('uid')
+    def _compute_is_approval_user(self):
+        is_user = self.env.user.has_group('approvals.group_approval_user')
+        for order in self:
+            order.is_approval_user = is_user
 
     def action_request_approval(self):
         for order in self:

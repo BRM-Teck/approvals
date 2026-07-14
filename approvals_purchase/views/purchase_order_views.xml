@@ -10,36 +10,35 @@
                 <field name="approval_request_id" invisible="1"/>
                 <field name="approval_request_status" invisible="1"/>
                 <field name="user_status" invisible="1"/>
+                <field name="is_approval_user" invisible="1"/>
             </xpath>
             
             <!-- Hide native confirm buttons if approval is needed but not approved -->
-            <!-- Actually, better to modify their invisible condition or just let python error handle it, 
-                 but adding a new button is cleaner. -->
             <xpath expr="//button[@name='button_confirm'][1]" position="attributes">
                 <!-- Draft state confirm button -->
-                <attribute name="invisible">state != 'draft' or approval_request_status != 'approved'</attribute>
+                <attribute name="invisible">state != 'draft' or (not approval_request_id and is_approval_user) or (approval_request_id and approval_request_status != 'approved')</attribute>
             </xpath>
             
             <xpath expr="//button[@name='button_confirm'][2]" position="attributes">
                 <!-- Sent state confirm button -->
-                <attribute name="invisible">state != 'sent' or approval_request_status != 'approved'</attribute>
+                <attribute name="invisible">state != 'sent' or (not approval_request_id and is_approval_user) or (approval_request_id and approval_request_status != 'approved')</attribute>
             </xpath>
 
             <!-- Hide native Send RFQ buttons if not approved -->
             <xpath expr="//button[@name='action_rfq_send'][1]" position="attributes">
                 <!-- Draft state Send by Email button -->
-                <attribute name="invisible">state != 'draft' or approval_request_status != 'approved'</attribute>
+                <attribute name="invisible">state != 'draft' or (not approval_request_id and is_approval_user) or (approval_request_id and approval_request_status != 'approved')</attribute>
             </xpath>
             
             <xpath expr="//button[@name='action_rfq_send'][2]" position="attributes">
                 <!-- Sent state Re-Send by Email button -->
-                <attribute name="invisible">state != 'sent' or approval_request_status != 'approved'</attribute>
+                <attribute name="invisible">state != 'sent' or (not approval_request_id and is_approval_user) or (approval_request_id and approval_request_status != 'approved')</attribute>
             </xpath>
 
             <!-- Add Request Approval button -->
             <xpath expr="//button[@name='button_confirm'][1]" position="before">
                 <button name="action_request_approval" type="object" string="Demander Approbation" class="oe_highlight"
-                        invisible="state not in ('draft', 'sent') or approval_request_id != False"
+                        invisible="state not in ('draft', 'sent') or approval_request_id != False or not is_approval_user"
                         groups="purchase.group_purchase_user"/>
                 <button name="action_approve" type="object" string="Approuver" class="btn-success"
                         invisible="approval_request_id == False or approval_request_status != 'pending' or user_status != 'pending'"/>
