@@ -42,6 +42,16 @@ class ApprovalCategory(models.Model):
     sequence_code = fields.Char(string='Sequence Code', help="Code used to generate the sequence of requests. E.g. 'PROC' for Procurement.")
     sequence_id = fields.Many2one('ir.sequence', string='Sequence ID', help="The ir.sequence used to generate request names.", copy=False)
 
+    # Exclusions
+    excluded_user_ids = fields.Many2many(
+        'res.users',
+        relation='approval_category_excluded_users_rel',
+        string='Excluded Users',
+        domain=lambda self: [('groups_id', 'in', self.env.ref('approvals.group_approval_user').id)] if self.env.ref('approvals.group_approval_user', raise_if_not_found=False) else [],
+        help="Users in this list will bypass the approval process for this category."
+    )
+
+
     # Counts
     request_to_validate_count = fields.Integer(string='Requests to Validate', compute='_compute_request_to_validate_count')
 
