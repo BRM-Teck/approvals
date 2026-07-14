@@ -8,6 +8,17 @@ class AccountMove(models.Model):
     approval_request_id = fields.Many2one('approval.request', string='Approval Request', copy=False, tracking=True)
     approval_request_status = fields.Selection(related='approval_request_id.request_status', string="Approval Status")
 
+    is_approval_user = fields.Boolean(compute='_compute_is_approval_user')
+
+    @api.depends_context('uid')
+    def _compute_is_approval_user(self):
+        category = self.env['approval.category'].search([('approval_type', '=', 'invoice')], limit=1)
+        is_user = self.env.user.has_group('approvals.group_approval_user')
+        if category and self.env.user in category.excluded_user_ids:
+            is_user = False
+        for move in self:
+            move.is_approval_user = is_user
+
     def action_request_approval(self):
         for move in self:
             if move.approval_request_id:
@@ -41,9 +52,6 @@ class AccountMove(models.Model):
             if move.approval_request_id and move.approval_request_status != 'approved':
                 raise UserError(_("You cannot confirm this invoice because the associated approval request is not yet approved."))
             
-            category = self.env['approval.category'].search([('approval_type', '=', 'invoice')], limit=1)
-            if category and not move.approval_request_id:
-                # If a category exists and no approval request is linked, we enforce approval if the category is configured to require it.
-                # For simplicity, if the category exists, we force approval.
+            if move.is_approval_user and not move.approval_request_id:
                 raise UserError(_("You must request approval before confirming this invoice."))
         return super().action_post()

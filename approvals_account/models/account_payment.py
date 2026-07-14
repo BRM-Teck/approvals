@@ -8,6 +8,17 @@ class AccountPayment(models.Model):
     approval_request_id = fields.Many2one('approval.request', string='Approval Request', copy=False, tracking=True)
     approval_request_status = fields.Selection(related='approval_request_id.request_status', string="Approval Status")
 
+    is_approval_user = fields.Boolean(compute='_compute_is_approval_user')
+
+    @api.depends_context('uid')
+    def _compute_is_approval_user(self):
+        category = self.env['approval.category'].search([('approval_type', '=', 'payment')], limit=1)
+        is_user = self.env.user.has_group('approvals.group_approval_user')
+        if category and self.env.user in category.excluded_user_ids:
+            is_user = False
+        for payment in self:
+            payment.is_approval_user = is_user
+
     def action_request_approval(self):
         for payment in self:
             if payment.approval_request_id:
@@ -38,7 +49,6 @@ class AccountPayment(models.Model):
             if payment.approval_request_id and payment.approval_request_status != 'approved':
                 raise UserError(_("You cannot confirm this payment because the associated approval request is not yet approved."))
             
-            category = self.env['approval.category'].search([('approval_type', '=', 'payment')], limit=1)
-            if category and not payment.approval_request_id:
+            if payment.is_approval_user and not payment.approval_request_id:
                 raise UserError(_("You must request approval before confirming this payment."))
         return super().action_post()

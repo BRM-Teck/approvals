@@ -1,6 +1,6 @@
 {
     'name': 'Approvals - Account',
-    'version': '19.0.1.0.1',
+    'version': '19.0.1.0.2',
     'category': 'Human Resources/Approvals',
     'summary': 'Link approvals with invoices and payments',
     'description': """
