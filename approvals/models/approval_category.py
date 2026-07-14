@@ -47,7 +47,7 @@ class ApprovalCategory(models.Model):
         'res.users',
         relation='approval_category_excluded_users_rel',
         string='Excluded Users',
-        domain=lambda self: [('groups_id', 'in', self.env.ref('approvals.group_approval_user').id)] if self.env.ref('approvals.group_approval_user', raise_if_not_found=False) else [],
+        domain=lambda self: [('group_ids', 'in', [self.env.ref('approvals.group_approval_user').id])] if self.env.ref('approvals.group_approval_user', raise_if_not_found=False) else [],
         help="Users in this list will bypass the approval process for this category."
     )
 
