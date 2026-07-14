@@ -1,6 +1,6 @@
 {
     'name': 'Approvals',
-    'version': '19.0.1.1.2',
+    'version': '19.0.1.1.3',
     'category': 'Human Resources/Approvals',
     'summary': 'Create and validate approvals',
     'description': """

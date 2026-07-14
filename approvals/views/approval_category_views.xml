@@ -94,7 +94,7 @@
                 <field name="active"/>
                 <templates>
                     <t t-name="menu" groups="approvals.group_approval_user">
-                        <a t-if="widget.editable" role="menuitem" type="edit" class="dropdown-item">Edit</a>
+                        <a t-if="widget.editable" role="menuitem" type="open" class="dropdown-item">Edit</a>
                         <a t-if="record.active.raw_value" role="menuitem" type="archive" class="dropdown-item">Archive</a>
                         <a t-if="!record.active.raw_value" role="menuitem" type="unarchive" class="dropdown-item">Unarchive</a>
                     </t>
