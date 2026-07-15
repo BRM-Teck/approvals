@@ -7,6 +7,7 @@ class AccountMove(models.Model):
 
     approval_request_id = fields.Many2one('approval.request', string='Approval Request', copy=False, tracking=True)
     approval_request_status = fields.Selection(related='approval_request_id.request_status', string="Approval Status")
+    user_status = fields.Selection(related='approval_request_id.user_status', string="User Status")
 
     is_approval_user = fields.Boolean(compute='_compute_is_approval_user')
 
@@ -45,6 +46,16 @@ class AccountMove(models.Model):
             move.message_post(body=Markup(_("Approval request submitted: <a href='#' data-oe-model='approval.request' data-oe-id='%s'>%s</a>")) % (approval_request.id, approval_request.name))
             approval_request.message_post(body=Markup(_("Created from Invoice: <a href='#' data-oe-model='account.move' data-oe-id='%s'>%s</a>")) % (move.id, move.name or 'Draft'))
 
+    def action_approve(self):
+        for move in self:
+            if move.approval_request_id:
+                move.approval_request_id.action_approve()
+
+    def action_refuse(self):
+        for move in self:
+            if move.approval_request_id:
+                move.approval_request_id.action_refuse()
+
     def action_post(self):
         for move in self:
             if move.move_type == 'entry':
@@ -56,3 +67,4 @@ class AccountMove(models.Model):
             if move.is_approval_user and not move.approval_request_id:
                 raise UserError(_("You must request approval before confirming this invoice."))
         return super().action_post()
+

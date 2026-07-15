@@ -7,10 +7,15 @@
         <field name="arch" type="xml">
             <xpath expr="//header" position="inside">
                 <field name="is_approval_user" invisible="1"/>
+                <field name="user_status" invisible="1"/>
                 <button name="action_request_approval" type="object" string="Request Approval" class="oe_highlight"
                         invisible="state != 'draft' or approval_request_id != False or not is_approval_user"/>
                 <button name="action_request_approval" type="object" string="Request Approval" 
                         invisible="state != 'draft' or approval_request_id != False or is_approval_user"/>
+                <button name="action_approve" type="object" string="Approuver" class="btn-success"
+                        invisible="approval_request_id == False or approval_request_status not in ('pending',) or user_status != 'pending'"/>
+                <button name="action_refuse" type="object" string="Refuser" class="btn-danger"
+                        invisible="approval_request_id == False or approval_request_status not in ('pending',) or user_status != 'pending'"/>
                 <field name="approval_request_status" invisible="1"/>
             </xpath>
             <xpath expr="//button[@name='action_post'][1]" position="attributes">
@@ -32,3 +37,4 @@
         </field>
     </record>
 </odoo>
+
